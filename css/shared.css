@@ -1,0 +1,152 @@
+body,html{
+    max-height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    overflow:   scroll;
+
+}
+#icon{
+    position: fixed;
+    top:25px;
+    left: 10px;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+.songs-div {
+    padding-top: 80px;
+    height: 80vh;
+    overflow: hidden;
+}
+.profile-image{
+    width: 100px;
+    background-color: transparent;
+    border: none;
+}
+.main-section{
+    padding-top: 20px;
+    height: 80vh;
+    /*border: 1px solid #fff;*/
+    /*border-bottom: none;*/
+    /*border-top: none;*/
+    font-family: 'Ranga', cursive;
+}
+.search-bar{
+    background-color: transparent;
+    border: none;
+}
+.input-group{
+    outline: white;
+}
+.profile-section{
+    text-align: center;
+    padding-top: 50px;
+    height: 80vh;
+}
+.username{
+    padding: 15px;
+    background-color: #ff5252;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 25px;
+    border: none;
+}
+.search-btn{
+    background-color: #66BB6A ;
+    border:none;
+}
+#playbar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20vh;
+    background-color: black;
+    padding: 0px;
+    margin: 0px;
+}
+.play-bar{
+    text-align: center;
+    width: 50vw;
+    height: 5vh;
+    position: absolute;
+    top:30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.icons{
+    background-color: transparent;
+    border: none;
+    height: 5vh;
+    outline: none;
+}
+.play-bar img{
+    height: 5vh;
+
+}
+.play{
+    background-color: gray;
+    height: 1vh;
+    margin: 0px;
+    padding: 0px;
+}
+.player{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%,-30%);
+    text-align: center;
+}
+#played{
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+ }
+#recent-songs{
+    height: 25vh;
+    /*border: 1px solid #fff;*/
+    overflow-x: scroll;
+    white-space:nowrap;
+    padding-left: 20px;
+}
+#playlist{
+    height: 25vh;
+    /*border: 1px solid #fff;*/
+    overflow-x: scroll;
+    white-space:nowrap;
+    padding-left: 20px;
+}
+#songs-played,#playlist-songs{
+    float: left;
+
+}
+.card{
+    display: inline-block;
+    margin-left: 10px;
+}
+.play_song{
+    width: 40px;
+}
+#wrapper_div{
+    padding: 0 10px;
+    width: 100%;
+}
+#html_player{
+    display: none;
+}
+.add_to{
+    width: 35px;
+}
+.card-title{
+    padding-top: 10px;
+    padding-left: 10px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
