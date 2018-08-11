@@ -1,11 +1,6 @@
-init();
-function init(){
-    // var duration = $('#html_player')[0];
-    // $("#start_time").text('0.00');
-    // console.log(duration.duration);
-    // $('end_time').text(duration.duration);
+$("#search_song").on('click',()=>{
 
-}
+});
 $("#play_song").on('click',()=>{
     song_handle();
 });
@@ -13,7 +8,7 @@ $("#play_song").on('click',()=>{
 $(".get_song").click(function(){
     var id = this.id;
     console.log(id);
-    var url= `controllers/player_controller.php`;
+    var url= `controllers/songs_ajax.php`;
     $.ajax({
         type:'GET',
         url:url,

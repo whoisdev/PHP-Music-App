@@ -1,5 +1,6 @@
 <?php   ob_start(); ?>
 <?php   include "db.php";?>
+<?php include "controllers/mainsection_controller.php" ?>
 
 <!doctype html>
 <html lang="en">
