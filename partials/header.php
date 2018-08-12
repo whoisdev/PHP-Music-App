@@ -1,7 +1,5 @@
 <?php   ob_start(); ?>
 <?php   include "db.php";?>
-<?php include "controllers/mainsection_controller.php" ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,9 +19,5 @@
     <link rel="stylesheet" href="css/add_songs.css">
 </head>
 <body>
-<div id="icon">
-    <a href="index.php"><img src="images/icon.png"></a>
-</div>
-
 <!--<div class="container">-->
     <div class="row" id="wrapper_div">
