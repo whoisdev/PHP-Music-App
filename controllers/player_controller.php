@@ -22,13 +22,13 @@
         </div>
         <div class="row">
             <div class="player">
-                <div class="col-xs-2" id="start_time">1.90</div>
+                <div class="col-xs-2" id="start_time">- -</div>
                 <div class="col-xs-8 play">
                     <div id ="played">
 
                     </div>
                 </div>
-                <div class="col-xs-2" id="end_time">5.10</div>
+                <div class="col-xs-2" id="end_time">- -</div>
                 <audio controls id="html_player">
                     <source src="music/" type="audio/mpeg">
                     Your browser does not support the audio element.

@@ -29,8 +29,11 @@ body,html{
     border: none;
 }
 .search-bar{
-    background-color: transparent;
     border: none;
+}
+.search{
+    margin-top: 10px;
+
 }
 .input-group{
     outline: white;
@@ -141,7 +144,7 @@ body,html{
     margin: 0;
 }
 #html_player{
-    /*display: none;*/
+    display: none;
 }
 .add_to{
     width: 35px;
