@@ -40,7 +40,7 @@
                     <div class="col-sm-12">
                         <hr>
                         <img src="./images/play.png " class="music-icon-playlist">
-                        <span class="song-title"><?php  echo $row['playlist_name'] ?></span>
+                        <span class="song-title play_playlist"><?php  echo $row['playlist_name'] ?></span>
                         <span class="number_of_songs"><?php  echo strlen($row['song_id'])  ?></span>
                     </div>
                 </div>

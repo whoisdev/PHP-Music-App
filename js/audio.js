@@ -27,7 +27,6 @@ $( document ).ready(function() {
                 url:"./controllers/songs_ajax.php",
                 data:{songid:id}
             ,success:function(data) {
-                    console.log(data);
                 $("#html_player").attr("src",data);
                 song_handle();
             }
@@ -43,14 +42,19 @@ $( document ).ready(function() {
 
     $("#search_query").keyup(function() {
         var query = $("#search_query").val();
-        $.ajax({
-            url:"./controllers/songs_ajax.php",
-            data:{search:query}
-            ,success:function(data) {
-                $("#main").html(data);
+        if (query){
+            $.ajax({
+                url: "./controllers/songs_ajax.php",
+                data: {search: query}
+                , success: function (data) {
+                    $("#main").html(data);
 
-            }
-        });
+                }
+            });
+        }
+    });
+    $('#main').on('click', '.play_playlist', function (){
+        console.log('haha')
     });
 });
 
