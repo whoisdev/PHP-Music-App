@@ -54,7 +54,14 @@ $( document ).ready(function() {
         }
     });
     $('#main').on('click', '.play_playlist', function (){
-        console.log('haha')
+        var id = this.id;
+        $.ajax({
+            url: "./controllers/songs_ajax.php",
+            data: {playlist_get: id}
+            , success: function (data) {
+                $("#sidebar").html(data);
+            }
+        });
     });
 });
 

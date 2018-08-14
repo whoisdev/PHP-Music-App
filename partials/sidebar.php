@@ -14,7 +14,7 @@
         <h3 class="username">Dev Singh</h3>
     </div>
 
-    <div class="links">
+    <div class="links" id="sidebar">
         <a><button class="icons">Profile</button></a>
         <a><button class="icons" id="all_songs">Songs</button></a>
         <a><button class="icons" id="playlist">Playlists</button></a>
