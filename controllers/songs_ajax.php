@@ -44,6 +44,7 @@
                         <span class="number_of_songs"><?php  echo strlen($row['song_id'])  ?></span>
                     </div>
                 </div>
+
             </div>
             <?php
         }

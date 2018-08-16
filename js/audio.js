@@ -1,15 +1,17 @@
 $( document ).ready(function() {
 
     $("#all_songs").on('click', () => {
-
-        $.ajax({
-            type: 'GET',
-            url: "./controllers/songs_ajax.php",
-            data: {request: "all"},
-            success: function (data) {
-                $("#main").html(data);
-            }
+        $.get('./controllers/songs_ajax.php', { request:1 }, function(data) {
+            $("#main").html(data);
         });
+        // $.ajax({
+        //     type: 'GET',
+        //     url: "./controllers/songs_ajax.php",
+        //     data: {request: "all"},
+        //     success: function (data) {
+        //         $("#main").html(data);
+        //     }
+        // });
     });
     $("#playlist").on('click',()=>{
         $.ajax({
