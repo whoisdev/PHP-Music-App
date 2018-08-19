@@ -23,6 +23,7 @@ body,html{
     overflow-x: hidden;
     text-align: center;
 }
+
 .profile-image{
     width: 100px;
     background-color: transparent;
@@ -107,7 +108,7 @@ body,html{
     text-align: center;
 }
 #played{
-    width: 50%;
+    width: 0%;
     height: 100%;
     background-color: #fff;
  }
@@ -194,3 +195,8 @@ hr{
     float: right;
     padding-right: 100px;
 }
+.playlist_add:hover{
+    cursor: pointer;
+     color: white;
+}
+

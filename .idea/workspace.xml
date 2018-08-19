@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="168c61e2-3881-4926-bb7e-371a75016b65" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/add_songs.php" beforeDir="false" afterPath="$PROJECT_DIR$/add_songs.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/songs_ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/songs_ajax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/shared.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/shared.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/audio.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/audio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partials/add_songs_headder.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/add_songs_header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/partials/sidebar.php" beforeDir="false" afterPath="$PROJECT_DIR$/partials/sidebar.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -69,13 +66,13 @@
       <file leaf-file-name="songs_ajax.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/songs_ajax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="90" column="44" selection-start-line="90" selection-start-column="44" selection-end-line="90" selection-end-column="44" />
+            <state relative-caret-position="420">
+              <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sidebar.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sidebar.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/partials/sidebar.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
@@ -84,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="audio.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="audio.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/audio.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
+            <state relative-caret-position="215">
+              <caret line="81" column="58" selection-start-line="81" selection-start-column="58" selection-end-line="81" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -96,8 +93,8 @@
       <file leaf-file-name="shared.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/shared.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2397">
-              <caret line="141" column="19" selection-start-line="141" selection-start-column="19" selection-end-line="141" selection-end-column="19" />
+            <state relative-caret-position="318">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
@@ -114,13 +111,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mai</find>
-      <find>sear</find>
-      <find>profile</find>
-      <find>padding-</find>
-      <find>sm</find>
-      <find>playbar</find>
-      <find>media</find>
       <find>song</find>
       <find>init</find>
       <find>card-title</find>
@@ -143,7 +133,14 @@
       <find>play</find>
       <find>play_S</find>
       <find>song-title</find>
+      <find>song_add_playlist</find>
       <find>playlist_get</find>
+      <find>audi</find>
+      <find>dis</find>
+      <find>played</find>
+      <find>displa</find>
+      <find>sidebar</find>
+      <find>songs-div</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -167,15 +164,15 @@
         <option value="$PROJECT_DIR$/controllers/profile_controller.php" />
         <option value="$PROJECT_DIR$/controllers/player_controller.php" />
         <option value="$PROJECT_DIR$/controllers/songs_controller.php" />
-        <option value="$PROJECT_DIR$/css/shared.css" />
         <option value="$PROJECT_DIR$/controllers/.htaccess" />
         <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/controllers/mainsection_controller.php" />
-        <option value="$PROJECT_DIR$/partials/sidebar.php" />
         <option value="$PROJECT_DIR$/partials/header.php" />
         <option value="$PROJECT_DIR$/controllers/songs_ajax.php" />
         <option value="$PROJECT_DIR$/js/audio.js" />
+        <option value="$PROJECT_DIR$/css/shared.css" />
+        <option value="$PROJECT_DIR$/partials/sidebar.php" />
       </list>
     </option>
   </component>
@@ -275,12 +272,12 @@
       <workItem from="1534226362308" duration="3049000" />
       <workItem from="1534318133517" duration="3474000" />
       <workItem from="1534566367620" duration="189000" />
-      <workItem from="1534641038745" duration="5978000" />
+      <workItem from="1534641038745" duration="12237000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66922000" />
+    <option name="totallyTimeSpent" value="73181000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
@@ -315,9 +312,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/audio.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/songs_controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -535,13 +529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/shared.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2397">
-          <caret line="141" column="19" selection-start-line="141" selection-start-column="19" selection-end-line="141" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../apache2/conf/httpd.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -605,24 +592,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/partials/sidebar.php">
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/songs_ajax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="90" column="44" selection-start-line="90" selection-start-column="44" selection-end-line="90" selection-end-column="44" />
+        <state relative-caret-position="196">
+          <caret line="3016" column="4" selection-start-line="3016" selection-start-column="4" selection-end-line="3016" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/audio.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
+        <state relative-caret-position="215">
+          <caret line="81" column="58" selection-start-line="81" selection-start-column="58" selection-end-line="81" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/shared.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/songs_ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/partials/sidebar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
         </state>
       </provider>
     </entry>

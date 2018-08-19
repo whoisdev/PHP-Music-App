@@ -79,7 +79,7 @@ let ajax_controller = function() {
 
     $('#html_player').on("canplay", function () {
         $("#start_time").html('0.00');
-        $("#end_time").html(JSON.stringify(this.duration/60).substring(0,4));
+        $("#end_time").html(millisToMinutesAndSeconds(this.duration));
     });
 
     /*
@@ -112,6 +112,28 @@ let ajax_controller = function() {
         });
     });
 
+    $('#main').on('click', '.song_add_playlist', function (){
+        var id = this.id;
+        let data = {
+            playlist_add: id
+        };
+        $.ajax({
+            url: "./controllers/songs_ajax.php",
+            data: data
+            , success: function (data) {
+                $("#sidebar").html(data);
+            }
+        });
+        var recursiveEncoded = $.param(data);
+        var recursiveDecoded = decodeURIComponent($.param( data ));
+        window.history.pushState(recursiveDecoded);
+        console.log(recursiveDecoded);
+    $('#sidebar').on('click', '.playlist_add', function (){
+        this.submit();
+    });
+
+    });
+
 
     /*
         - This function returns a promise which will return the page on which the webpage is reloaded
@@ -134,8 +156,6 @@ let ajax_controller = function() {
     }
 };
 
-
-
 /*
     - This is to change the play and pause state and the image of the player
  */
@@ -149,4 +169,29 @@ function song_handle(){
         $('#play_song img').attr("src","images/pause.png");
         button.play();
     }
+}
+
+const button = $('#html_player')[0];
+button.addEventListener('timeupdate', (event) => {
+    const currentTime = (button.currentTime / button.duration)*100;
+    if(currentTime){
+        $("#start_time").html(millisToMinutesAndSeconds(button.currentTime));
+        $("#played").css('width',currentTime+"%");
+    }
+}, false);
+
+function millisToMinutesAndSeconds(inputSeconds) {
+    const secs = parseInt( inputSeconds, 10 );
+    let minutes = Math.floor( secs / 60 );
+    let seconds = secs - minutes * 60;
+
+    if ( 10 > minutes ) {
+        minutes = minutes;
+    }
+    if ( 10 > seconds ) {
+        seconds = '0' + seconds;
+    }
+
+    // Return display.
+    return minutes + ':' + seconds;
 }

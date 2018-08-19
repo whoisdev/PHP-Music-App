@@ -92,6 +92,23 @@
         print_songs($query_all_songs_in_playlist);
     }
 
+    else if(isset($_GET['playlist_add'])){
+        $id_of_song = $_GET['playlist_add'];
+        $query = "SELECT * FROM playlist";
+        $result = mysqli_query($connection,$query);
+        ?>
+         <h4> Click on the playlist to add</h4>
+        <?php
+        while($row = mysqli_fetch_assoc($result)){
+            $play_list_id = $row['playlist_id'];
+            ?>
+            <form method="get" action="./?q=add&play_list=<?php echo $play_list_id ?>&song=<?php echo $id_of_song ?>" class="playlist_add" >
+            <h3 id="<?php echo $play_list_id;?>"><?php echo $row['playlist_name'];?></h3>
+            </form>
+            <?php
+        }
+    }
+
     function print_songs($result_recieved){
         while($row = mysqli_fetch_assoc($result_recieved)) {
             $pattern = '/(.mp3)/i';
