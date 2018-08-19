@@ -1,8 +1,12 @@
+//Driver Functions
 $( document ).ready(function() {
-        ajax_controller();
+    var UI = UIcontroller();
+    UI.toggle_class();
+    UI.playbar();
+    ajax_controller(UI);
 });
 
-let ajax_controller = function() {
+let ajax_controller = function(UI) {
     /*
         - This function is to check if the user reloaded a page and see what
         - page the user refreshed on
@@ -10,6 +14,7 @@ let ajax_controller = function() {
     window.onload = function (e) {
         get_session().
         then((result)=>{
+            console.log(result);
             let obj ={};
             obj[result] = 'all';
             $.ajax({
@@ -17,42 +22,36 @@ let ajax_controller = function() {
                 url: "./controllers/songs_ajax.php",
                 data: obj,
                 success: function (data) {
-                    $("#main").html(data);
+                    UI.dom_manupulation("main",data);
                 }
             });
         });
     };
-
     /*
         - This call back is to get all the songs
      */
-
     $("#all_songs").on('click', () => {
         $.get('./controllers/songs_ajax.php', { request:1 }, function(data) {
-            $("#main").html(data);
+            UI.dom_manupulation("main",data);
         });
     });
-
     /*
         - This call back is to get all the playlist
      */
-
     $("#playlist").on('click',()=>{
         $.ajax({
             type: 'GET',
             url: "./controllers/songs_ajax.php",
             data: {playlist: "all"},
             success: function (data) {
-                $("#main").html(data);
+                UI.dom_manupulation("main",data);
             }
         });
     });
-
     /*
         - This callback is to get the location of the songs which is clicked
         - it will return the name of the file
      */
-
     $('#main').on('click', '.get_song', function (){
         var id = this.id;
         $.ajax({
@@ -60,28 +59,23 @@ let ajax_controller = function() {
             data:{songid:id}
             ,success:function(data) {
                 $("#html_player").attr("src",data);
-                song_handle();
+                UI.song_handle();
             }
         });
     });
-
     /*
         - This callback it to play the song
      */
-
     $('#play_song').on('click',()=>{
-        song_handle();
+        UI.song_handle();
     });
-
     /*
         - This callback is to set the time of the player
      */
-
     $('#html_player').on("canplay", function () {
         $("#start_time").html('0.00');
         $("#end_time").html(millisToMinutesAndSeconds(this.duration));
     });
-
     /*
         - This is to search the songs whenever a key is pressed
      */
@@ -92,8 +86,7 @@ let ajax_controller = function() {
                 url: "./controllers/songs_ajax.php",
                 data: {search: query}
                 , success: function (data) {
-                    $("#main").html(data);
-
+                    UI.dom_manupulation("main",data);
                 }
             });
         }
@@ -107,7 +100,19 @@ let ajax_controller = function() {
             url: "./controllers/songs_ajax.php",
             data: {playlist_get: id}
             , success: function (data) {
-                $("#main").html(data);
+                UI.dom_manupulation("main",data);
+            }
+        });
+    });
+    /*
+        - Ajax when clicked on profile it will get the user data
+     */
+    $('#sidebar').on('click', '#profile', function (){
+        $.ajax({
+            url: "./controllers/songs_ajax.php",
+            data: {get_user_profile: ''}
+            , success: function (data) {
+                UI.dom_manupulation("main",data);
             }
         });
     });
@@ -115,23 +120,15 @@ let ajax_controller = function() {
     $('#main').on('click', '.song_add_playlist', function (){
         var id = this.id;
         let data = {
-            playlist_add: id
+            song_id: id
         };
         $.ajax({
             url: "./controllers/songs_ajax.php",
             data: data
             , success: function (data) {
-                $("#sidebar").html(data);
+                UI.dom_manupulation("sidebar",data);
             }
         });
-        var recursiveEncoded = $.param(data);
-        var recursiveDecoded = decodeURIComponent($.param( data ));
-        window.history.pushState(recursiveDecoded);
-        console.log(recursiveDecoded);
-    $('#sidebar').on('click', '.playlist_add', function (){
-        this.submit();
-    });
-
     });
 
 
@@ -156,29 +153,40 @@ let ajax_controller = function() {
     }
 };
 
-/*
-    - This is to change the play and pause state and the image of the player
- */
-function song_handle(){
-    var button = $('#html_player')[0];
-    if(button.paused == false){
-        $('#play_song img').attr("src","images/play.png");
-        button.pause();
-    }
-    else{
-        $('#play_song img').attr("src","images/pause.png");
-        button.play();
-    }
-}
 
-const button = $('#html_player')[0];
-button.addEventListener('timeupdate', (event) => {
-    const currentTime = (button.currentTime / button.duration)*100;
-    if(currentTime){
-        $("#start_time").html(millisToMinutesAndSeconds(button.currentTime));
-        $("#played").css('width',currentTime+"%");
-    }
-}, false);
+let UIcontroller = function () {
+    let button = $('#html_player')[0];
+    return {
+          song_handle : function () {
+              if(button.paused == false){
+                  $('#play_song img').attr("src","images/play.png");
+                  button.pause();
+              }
+              else{
+                  $('#play_song img').attr("src","images/pause.png");
+                  button.play();
+              }
+          },
+        dom_manupulation : function (id,content) {
+            $("#"+id).html(content);
+        },
+        toggle_class : function () {
+            $('.sidebar_button').on('click',(e)=>{
+                $( ".sidebar_button").removeClass( "active" );
+                $(this).toggleClass("active");
+            });
+        },
+        playbar : function () {
+            button.addEventListener('timeupdate', (event) => {
+                const currentTime = (button.currentTime / button.duration)*100;
+                if(currentTime){
+                    $("#start_time").html(millisToMinutesAndSeconds(button.currentTime));
+                    $("#played").css('width',currentTime+"%");
+                }
+            }, false);
+        }
+      }
+};
 
 function millisToMinutesAndSeconds(inputSeconds) {
     const secs = parseInt( inputSeconds, 10 );
@@ -192,6 +200,5 @@ function millisToMinutesAndSeconds(inputSeconds) {
         seconds = '0' + seconds;
     }
 
-    // Return display.
     return minutes + ':' + seconds;
 }
