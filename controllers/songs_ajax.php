@@ -15,7 +15,9 @@ else if(isset($_GET['request'])){
     $query_get_all_songs = "SELECT * FROM songs";
     $result_recieved = mysqli_query($connection, $query_get_all_songs);
     print_songs($result_recieved,'All Songs');
-}
+//    echo $twig-> render('player.html');
+
+    }
 
 else if(isset($_GET['playlist'])){
     $_SESSION['current'] = 'playlist';

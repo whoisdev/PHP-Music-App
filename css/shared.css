@@ -104,7 +104,7 @@ body,html{
     color: white;
 }
 .play-bar img{
-    height: 5vh;
+    height: 4vh;
 
 }
 .play{
@@ -115,12 +115,19 @@ body,html{
 }
 .player{
     position: absolute;
-    bottom: 0px;
+    bottom: 25px;
     left: 50%;
     width: 80%;
     transform: translate(-50%,-30%);
     text-align: center;
 }
+#song_name{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    text-align: center;
+}
+
 #played{
     width: 0%;
     height: 100%;
