@@ -1,4 +1,4 @@
-<?php include "partials/add_songs_headder.php"; ?>
+<?php include "partials/add_songs_header.php"; ?>
 
 <form id="add_songs" enctype="multipart/form-data" class="form-action" method="post" action="upload_image.php" >
     <div class="centered-image">

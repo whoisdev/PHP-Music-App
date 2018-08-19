@@ -1,33 +1,20 @@
 <?php include "../db.php"?>
+<?php   session_start(); ?>
 <?php
+    if(isset($_GET['get_session']) && !empty($_SESSION['current'])){
+        echo $_SESSION['current'];
+    }
     if(isset($_GET['request'])){
+        $_SESSION['current'] = 'request';
         $query_get_all_songs = "SELECT * FROM songs";
         $result_recieved = mysqli_query($connection, $query_get_all_songs);
         ?>
         <h2>ALL SONGS</h2>
         <?php
-        while($row = mysqli_fetch_assoc($result_recieved)) {
-            $pattern = '/(.mp3)/i';
-            $title = preg_replace($pattern, "", $row['title']);
-            if(strlen($title)>25){
-                $title = substr($title,0,25).' ...';
-            }
-            ?>
-            <div class="songs-cards">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <hr>
-                        <img src="./images/music.png " class="play_song">
-                        <button class="icons song_add_playlist" id="<?php echo $row['id']?>"><img src="./images/add_to.png " class="play_song"></button>
-                        <button class="icons get_song" id="<?php echo $row['id']  ?>"><img src="./images/play.png" class="play_song"></button>
-                        <span class="song-title"><?php  echo $title?></span>
-                    </div>
-                </div>
-            </div>
-            <?php
-        }
+       print_songs($result_recieved);
     }
     else if(isset($_GET['playlist'])){
+        $_SESSION['current'] = 'playlist';
         $query_get_all_songs = "SELECT * FROM playlist";
         $result_recieved = mysqli_query($connection, $query_get_all_songs);
         ?>
@@ -39,8 +26,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <hr>
-                        <img src="./images/play.png " class="music-icon-playlist">
-                        <span class="song-title play_playlist" id="<?php echo $row['playlist_id'];?>"><?php  echo $row['playlist_name'] ?></span>
+                        <button class="icons play_playlist"  id="<?php echo $row['playlist_id'];?>"><img src="./images/play.png " class="music-icon-playlist"></button>
+                        <span class="song-title play_playlist"><?php  echo $row['playlist_name'] ?></span>
                         <span class="number_of_songs"><?php  echo strlen($row['song_id'])  ?></span>
                     </div>
                 </div>
@@ -50,6 +37,7 @@
         }
     }
     else if(isset($_GET['songid'])){
+        $_SESSION['current'] = 'songid';
         $id = $_GET['songid'];
         $query_get_song = "SELECT * FROM songs WHERE id = '{$id}'";
         $result = mysqli_query($connection,$query_get_song);
@@ -57,6 +45,7 @@
         echo $row['location'];
     }
     else if(isset($_GET['search'])){
+        $_SESSION['current'] = 'search';
         $query = $_GET['search'];
         $query_find_song = "SELECT * FROM songs WHERE title LIKE '%{$query}%'";
         $result = mysqli_query($connection, $query_find_song);
@@ -93,19 +82,32 @@
     }
     else if(isset($_GET['playlist_get'])){
         $id = $_GET['playlist_get'];
-        $query_get_all_songs = "SELECT * FROM playlist WHERE playlist_id = '{$id}'";
-        $result_recieved = mysqli_query($connection, $query_get_all_songs);
-        ?>
-        <h5>ALL PLAYLISTS</h5>
-        <?php
+        $query_find_songs_playlist = "SELECT song_id FROM playlist WHERE playlist_id = '{$id}'";
+        $result = mysqli_query($connection, $query_find_songs_playlist);
+        $row = mysqli_fetch_assoc($result);
+        $ids = $row['song_id'];
+        $songs_in_playlist = "SELECT * FROM songs WHERE id IN({$ids})";
+        $query_all_songs_in_playlist = mysqli_query($connection,$songs_in_playlist);
+        echo "<h1>All songs in playlist</h1>";
+        print_songs($query_all_songs_in_playlist);
+    }
+
+    function print_songs($result_recieved){
         while($row = mysqli_fetch_assoc($result_recieved)) {
+            $pattern = '/(.mp3)/i';
+            $title = preg_replace($pattern, "", $row['title']);
+            if(strlen($title)>25){
+                $title = substr($title,0,25).' ...';
+            }
             ?>
             <div class="songs-cards">
                 <div class="row">
                     <div class="col-sm-12">
                         <hr>
-                        <input type="radio" name="playlist_select" value ="<?php echo $row['playlist_id'];?>">
-                        <span class="song-title play_playlist"><?php  echo $row['playlist_name'] ?></span>
+                        <img src="./images/music.png " class="play_song">
+                        <button class="icons song_add_playlist" id="<?php echo $row['id']?>"><img src="./images/add_to.png " class="play_song"></button>
+                        <button class="icons get_song" id="<?php echo $row['id']  ?>"><img src="./images/play.png" class="play_song"></button>
+                        <span class="song-title"><?php  echo $title?></span>
                     </div>
                 </div>
             </div>

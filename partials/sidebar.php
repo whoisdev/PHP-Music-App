@@ -17,7 +17,7 @@
     <div class="links" id="sidebar">
         <a><button class="icons">Profile</button></a>
         <a><button class="icons" id="all_songs">Songs</button></a>
-        <a><button class="icons" id="playlist">Playlists</button></a>
+        <a><button class="icons" id="playlist" >Playlists</button></a>
         <a><button class="icons">Recent Songs</button></a>
         <a><button class="icons">Add Songs</button></a>
         <a><button class="icons">Sign Out</button></a>
