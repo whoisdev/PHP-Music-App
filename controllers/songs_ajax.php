@@ -1,5 +1,10 @@
 <?php include "../db.php"?>
 <?php   session_start(); ?>
+
+<?php require_once '../vendor/autoload.php'; ?>
+<?php $loader = new Twig_Loader_Filesystem('../templates/'); ?>
+<?php $twig = new Twig_Environment($loader); ?>
+
 <?php
 
 if(isset($_GET['get_session']) && !empty($_SESSION['current'])){
@@ -10,35 +15,16 @@ else if(isset($_GET['request'])){
     $_SESSION['current'] = 'request';
     $query_get_all_songs = "SELECT * FROM songs";
     $result_recieved = mysqli_query($connection, $query_get_all_songs);
-    ?>
-    <h2>ALL SONGS</h2>
-    <?php
-   print_songs($result_recieved);
+    print_songs($result_recieved);
 }
 
 else if(isset($_GET['playlist'])){
     $_SESSION['current'] = 'playlist';
     $query_get_all_songs = "SELECT * FROM playlist";
     $result_recieved = mysqli_query($connection, $query_get_all_songs);
-    ?>
-    <h2>ALL PLAYLISTS</h2>
-    <?php
-    while($row = mysqli_fetch_assoc($result_recieved)) {
-        ?>
-        <div class="songs-cards">
-            <div class="row">
-                <div class="col-sm-12">
-                    <hr>
-                    <button class="icons play_playlist"  id="<?php echo $row['playlist_id'];?>"><img src="./images/play.png " class="music-icon-playlist"></button>
-                    <span class="song-title play_playlist"><?php  echo $row['playlist_name'] ?></span>
-                    <span class="number_of_songs"><?php  echo strlen($row['song_id'])  ?></span>
-                </div>
-            </div>
-
-        </div>
-        <?php
-    }
+    echo $twig->render('playlist.html', array('data' => $result_recieved));
 }
+
 else if(isset($_GET['songid'])){
     $_SESSION['current'] = $_GET['songid'];
     $_SESSION['current'] = 'songid';
@@ -55,30 +41,8 @@ else if(isset($_GET['search'])){
     $result = mysqli_query($connection, $query_find_song);
     $row = mysqli_num_rows($result);
     if($row>=1){
-        ?>
-        <h3>YOUR SEARCH MATCHES FOLLOWING RESULTS</h3>
-        <?php
-    while($row = mysqli_fetch_assoc($result)) {
-
-        $pattern = '/(.mp3)/i';
-        $title = preg_replace($pattern, "", $row['title']);
-        if(strlen($title)>25){
-            $title = substr($title,0,25).' ...';
-        }
-        ?>
-        <div class="songs-cards">
-            <div class="row">
-                <div class="col-sm-12">
-                    <hr>
-                    <img src="./images/music.png " class="play_song">
-                    <button class="icons"><img src="./images/add_to.png " class="play_song"></button>
-                    <button class="icons get_song" id="<?php echo $row['id']  ?>"><img src="./images/play.png" class="play_song"></button>
-                    <span class="song-title"><?php  echo $title?></span>
-                </div>
-            </div>
-        </div>
-        <?php
-        }
+        echo "<h3>YOUR SEARCH MATCHES FOLLOWING RESULTS</h3>";
+        print_songs($result);
     }
     else{
         echo "<h3>OOPSS NO RESULTS</h3>";
@@ -116,31 +80,12 @@ else if(isset($_GET['song_id'])){
 
 else if(isset($_GET['get_user_profile'])){
     $_SESSION['current'] = $_GET['get_user_profile'];
-
     echo $_SERVER['REMOTE_ADDR'];
 }
 
 function print_songs($result_recieved){
-    while($row = mysqli_fetch_assoc($result_recieved)) {
-        $pattern = '/(.mp3)/i';
-        $title = preg_replace($pattern, "", $row['title']);
-        if(strlen($title)>25){
-            $title = substr($title,0,25).' ...';
-        }
-        ?>
-        <div class="songs-cards">
-            <div class="row">
-                <div class="col-sm-12">
-                    <hr>
-                    <img src="./images/music.png " class="play_song">
-                    <button class="icons song_add_playlist" id="<?php echo $row['id']?>"><img src="./images/add_to.png " class="play_song"></button>
-                    <button class="icons get_song" id="<?php echo $row['id']  ?>"><img src="./images/play.png" class="play_song"></button>
-                    <span class="song-title"><?php  echo $title?></span>
-                </div>
-            </div>
-        </div>
-        <?php
-    }
+    global $twig;
+    echo $twig->render('songs.html', array('data' => $result_recieved));
 }
 
 ?>

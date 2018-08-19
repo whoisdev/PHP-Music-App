@@ -1,5 +1,11 @@
 <?php   ob_start(); ?>
 <?php   include "db.php";?>
+
+<?php require_once './vendor/autoload.php'; ?>
+<?php $loader = new Twig_Loader_Filesystem('./templates/'); ?>
+<?php $twig = new Twig_Environment($loader); ?>
+<!---------->
+
 <!doctype html>
 <html lang="en">
 <head>
