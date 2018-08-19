@@ -4,13 +4,6 @@ $( document ).ready(function() {
     UI.toggle_class();
     UI.playbar();
     ajax_controller(UI);
-});
-
-let ajax_controller = function(UI) {
-    /*
-        - This function is to check if the user reloaded a page and see what
-        - page the user refreshed on
-     */
     window.onload = function (e) {
         get_session().
         then((result)=>{
@@ -27,6 +20,14 @@ let ajax_controller = function(UI) {
             });
         });
     };
+});
+
+let ajax_controller = function(UI) {
+    /*
+        - This function is to check if the user reloaded a page and see what
+        - page the user refreshed on
+     */
+
     /*
         - This call back is to get all the songs
      */
@@ -136,21 +137,7 @@ let ajax_controller = function(UI) {
         - This function returns a promise which will return the page on which the webpage is reloaded
      */
 
-    function get_session(){
-        return new Promise((resolve,reject)=>{
-            $.ajax({
-                type: 'GET',
-                url: "./controllers/songs_ajax.php",
-                data: {get_session:'current'},
-                success: function (data) {
-                    resolve(data);
-                },
-                error: function (error) {
-                    reject(error);
-                }
-            });
-        })
-    }
+
 };
 
 
@@ -201,4 +188,20 @@ function millisToMinutesAndSeconds(inputSeconds) {
     }
 
     return minutes + ':' + seconds;
+}
+
+function get_session(){
+    return new Promise((resolve,reject)=>{
+        $.ajax({
+            type: 'GET',
+            url: "./controllers/songs_ajax.php",
+            data: {get_session:'current'},
+            success: function (data) {
+                resolve(data);
+            },
+            error: function (error) {
+                reject(error);
+            }
+        });
+    })
 }

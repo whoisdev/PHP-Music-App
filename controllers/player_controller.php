@@ -1,4 +1,3 @@
-
 <div id="playbar">
     <div class="container">
         <div class="play-bar row">

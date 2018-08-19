@@ -5,7 +5,7 @@ body,html{
     margin: 0;
     background-color: #424242;
     color: #fff;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inconsolata', monospace;
     overflow:   scroll;
 }
 #icon{

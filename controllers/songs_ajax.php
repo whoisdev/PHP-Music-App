@@ -1,11 +1,10 @@
 <?php include "../db.php"?>
-<?php   session_start(); ?>
-
-<?php require_once '../vendor/autoload.php'; ?>
-<?php $loader = new Twig_Loader_Filesystem('../templates/'); ?>
-<?php $twig = new Twig_Environment($loader); ?>
-
 <?php
+
+session_start();
+require_once '../vendor/autoload.php';
+$loader = new Twig_Loader_Filesystem('../templates/');
+$twig = new Twig_Environment($loader);
 
 if(isset($_GET['get_session']) && !empty($_SESSION['current'])){
     echo $_SESSION['current'];
@@ -15,7 +14,7 @@ else if(isset($_GET['request'])){
     $_SESSION['current'] = 'request';
     $query_get_all_songs = "SELECT * FROM songs";
     $result_recieved = mysqli_query($connection, $query_get_all_songs);
-    print_songs($result_recieved);
+    print_songs($result_recieved,'All Songs');
 }
 
 else if(isset($_GET['playlist'])){
@@ -37,12 +36,12 @@ else if(isset($_GET['songid'])){
 else if(isset($_GET['search'])){
     $_SESSION['current'] = 'search';
     $query = $_GET['search'];
+    $query = mysqli_real_escape_string($connection,$query);
     $query_find_song = "SELECT * FROM songs WHERE title LIKE '%{$query}%'";
     $result = mysqli_query($connection, $query_find_song);
     $row = mysqli_num_rows($result);
     if($row>=1){
-        echo "<h3>YOUR SEARCH MATCHES FOLLOWING RESULTS</h3>";
-        print_songs($result);
+        print_songs($result,'YOUR SEARCH MATCHES FOLLOWING RESULTS');
     }
     else{
         echo "<h3>OOPSS NO RESULTS</h3>";
@@ -57,13 +56,11 @@ else if(isset($_GET['playlist_get'])){
     $ids = $row['song_id'];
     $songs_in_playlist = "SELECT * FROM songs WHERE id IN({$ids})";
     $query_all_songs_in_playlist = mysqli_query($connection,$songs_in_playlist);
-    echo "<h1>All songs in playlist</h1>";
-    print_songs($query_all_songs_in_playlist);
+    print_songs($query_all_songs_in_playlist,'All Songs in Playlist');
 }
 
 else if(isset($_GET['song_id'])){
     $_SESSION['current'] = 'playlist';
-
     $id_of_song = $_GET['song_id'];
     $query = "SELECT * FROM playlist";
     $result = mysqli_query($connection,$query);
@@ -83,9 +80,12 @@ else if(isset($_GET['get_user_profile'])){
     echo $_SERVER['REMOTE_ADDR'];
 }
 
-function print_songs($result_recieved){
+function print_songs($result_recieved,$title){
     global $twig;
-    echo $twig->render('songs.html', array('data' => $result_recieved));
+    echo $twig->render('songs.html', array(
+            'data' => $result_recieved,
+            'title' => $title )
+        );
 }
 
 ?>
