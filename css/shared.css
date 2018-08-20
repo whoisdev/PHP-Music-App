@@ -220,4 +220,24 @@ hr{
     cursor: pointer;
      color: white;
 }
+.login_form{
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    position: absolute;
+    left: 50%;
+    top:10%;
+    transform: translate(-50%,0%);
+    width: 40vw;
+}
+
+.log_in_button{
+    background-color: #ff5252;
+    text-decoration: none;
+    outline: none;
+    border: none;
+}
+*:focus {
+    outline: none;
+}
+
 

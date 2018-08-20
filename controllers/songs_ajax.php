@@ -78,8 +78,16 @@ else if(isset($_GET['song_id'])){
 }
 
 else if(isset($_GET['get_user_profile'])){
-    $_SESSION['current'] = $_GET['get_user_profile'];
-    echo $_SERVER['REMOTE_ADDR'];
+    if(!isset($_SESSION['user'])){
+        echo $twig-> render('login.html');
+    }
+    else{
+        $username = $_SESSION['user'];
+        $query_user = "SELECT username FROM users WHERE username = '{$username}'";
+        $result = mysqli_query($connection, $query_user);
+        $result = mysqli_fetch_assoc($result);
+        echo $twig->render('user_profile.html',array('data'=> $result));
+    }
 }
 
 function print_songs($result_recieved,$title){

@@ -4,22 +4,22 @@ $( document ).ready(function() {
     UI.toggle_class();
     UI.playbar();
     ajax_controller(UI);
-    window.onload = function (e) {
-        get_session().
-        then((result)=>{
-            console.log(result);
-            let obj ={};
-            obj[result] = 'all';
-            $.ajax({
-                type: 'GET',
-                url: "./controllers/songs_ajax.php",
-                data: obj,
-                success: function (data) {
-                    UI.dom_manupulation("main",data);
-                }
-            });
-        });
-    };
+    // window.onload = function (e) {
+    //     get_session().
+    //     then((result)=>{
+    //         console.log(result);
+    //         let obj ={};
+    //         obj[result] = 'all';
+    //         $.ajax({
+    //             type: 'GET',
+    //             url: "./controllers/songs_ajax.php",
+    //             data: obj,
+    //             success: function (data) {
+    //                 UI.dom_manupulation("main",data);
+    //             }
+    //         });
+    //     });
+    // };
 });
 
 let ajax_controller = function(UI) {
