@@ -3,7 +3,10 @@
 
 <!---Sidebar--->
 <?php
-    if(isset($_SESSION['user'])){
+    if(isset($_POST['singout'])){
+        $_SESSION['user'] = null;
+    }
+    if(isset($_SESSION['user']))    {
         echo $twig->render('sidebar.html', array('name' => $_SESSION['user']));
     }
     else{
