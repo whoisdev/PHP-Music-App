@@ -1,4 +1,5 @@
 <?php include "../db.php"?>
+<?php include "../router.php"; ?>
 <?php
 
 session_start();
@@ -6,6 +7,7 @@ require_once '../vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('../templates/');
 $twig = new Twig_Environment($loader);
 
+$router = new router();
 if(isset($_GET['get_session']) && !empty($_SESSION['current'])){
     echo $_SESSION['current'];
 }

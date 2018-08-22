@@ -35,6 +35,7 @@ let ajax_controller = function(UI) {
         $.get('./controllers/songs_ajax.php', { request:1 }, function(data) {
             UI.dom_manupulation("main",data);
         });
+        history.pushState({},"",'./request');
     });
     /*
         - This call back is to get all the playlist
@@ -48,6 +49,8 @@ let ajax_controller = function(UI) {
                 UI.dom_manupulation("main",data);
             }
         });
+        history.pushState({},"",'./playlist');
+
     });
     /*
         - This callback is to get the location of the songs which is clicked
@@ -116,6 +119,7 @@ let ajax_controller = function(UI) {
                 UI.dom_manupulation("main",data);
             }
         });
+        history.pushState({},"",'./profile');
     });
 
     $('#main').on('click', '.song_add_playlist', function (){

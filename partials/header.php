@@ -1,5 +1,6 @@
 <?php   ob_start(); ?>
 <?php   include "db.php";?>
+<?php  include'router.php';?>
 <?php session_start();?>
 <?php require_once './vendor/autoload.php'; ?>
 <?php $loader = new Twig_Loader_Filesystem('./templates/'); ?>

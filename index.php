@@ -1,8 +1,10 @@
 <!--Header-->
 <?php include "partials/header.php"; ?>
-
+<!--<div id="main">-->
 <!---Sidebar--->
 <?php
+     $router = new router();
+
     if(isset($_POST['singout'])){
         $_SESSION['user'] = null;
     }
@@ -10,15 +12,26 @@
         echo $twig->render('sidebar.html', array('name' => $_SESSION['user']));
     }
     else{
-        echo $_SESSION['user'];
+//        echo $_SESSION['user'];
         echo $twig->render('sidebar.html',array('name' => "login"));
     }
+    ?>
+<div class="col-sm-9 col-md-9 main-section" id="main">
+<?php
     if(isset($_GET['src'])){
-        include "controllers/singup.php";
+        $router->get($_GET['src']);
     }
-    else{
-        include "controllers/mainsection_controller.php";
+
+    else if(isset($_GET['request'])){
+        $router->get($_GET['request']);
     }
+    else if(isset($_GET['playlist'])){
+        $router->get($_GET['playlist']);
+    }
+    else if(isset($_GET['profile'])){
+        $router->get($_GET['profile']);
+    }
+//    include "controllers/mainsection_controller.php";
     if(isset($_POST['login'])){
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -34,10 +47,11 @@
         }
     }
 ?>
+</div>
 <!---->
 <?php echo $twig-> render('player.html'); ?>
 <!--Footer-->
 <?php  include "partials/footer.php"?>
 <!----------->
-
+<!--</div>-->
 
