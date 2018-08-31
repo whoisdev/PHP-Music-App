@@ -1,0 +1,243 @@
+body,html{
+    max-height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #424242;
+    color: #fff;
+    font-family: 'Inconsolata', monospace;
+    overflow:   scroll;
+}
+#icon{
+    position: fixed;
+    top:25px;
+    left: 10px;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+.songs-div {
+    padding-top: 10px;
+    height: 80vh;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.profile-image{
+    width: 100px;
+    background-color: transparent;
+    border: none;
+}
+.search-bar{
+    border: none;
+}
+.search{
+    margin-top: 10px;
+
+}
+.input-group{
+    outline: white;
+}
+.main-section{
+    height: 80vh;
+    background-color: #212121;
+    overflow-x: hidden;
+}
+.profile-section{
+    text-align: center;
+    padding-top: 50px;
+    height: 80vh;
+}
+.username{
+    margin: auto;
+    max-width: 150px;
+    padding: 15px;
+    background-color: #ff5252;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 25px;
+    border: none;
+}
+/*.name{*/
+    /*padding: 10px;*/
+    /*border-radius: 25px;*/
+    /*border-right: 2px solid #fff;*/
+/*}*/
+.search-btn{
+    background-color: #66BB6A ;
+    border:none;
+}
+#playbar{
+    border-top:2px solid #212121;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20vh;
+    background-color: #424242;
+    padding: 0px;
+    margin: 0px;
+}
+.play-bar{
+    text-align: center;
+    width: 50vw;
+    height: 5vh;
+    position: absolute;
+    top:30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.icons{
+    background-color: transparent;
+    border: none;
+    height: 5vh;
+    outline: none;
+}
+.sidebar_button{
+    background-color: transparent;
+    border: none;
+    height: 5vh;
+    outline: none;
+}
+.active{
+    color: white;
+}
+.play-bar img{
+    height: 4vh;
+
+}
+.play{
+    background-color: gray;
+    height: 1vh;
+    margin: 0px;
+    padding: 0px;
+}
+.player{
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%,-30%);
+    text-align: center;
+}
+#song_name{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    text-align: center;
+}
+
+#played{
+    width: 0%;
+    height: 100%;
+    background-color: #fff;
+ }
+#recent-songs{
+    height: 25vh;
+    /*border: 1px solid #fff;*/
+    overflow-x: scroll;
+    white-space:nowrap;
+    padding-left: 20px;
+}
+
+#songs-played,#playlist-songs{
+    float: left;
+
+}
+.card{
+    display: inline-block;
+    margin-left: 10px;
+}
+.play_song{
+    width: 40px;
+    padding-right: 10px;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+.song-title{
+    font-size: 2.5rem;
+    max-width: 10px;
+}
+.song-title:hover{
+    cursor: pointer;
+}
+
+#wrapper_div{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+#html_player{
+    display: none;
+}
+.add_to{
+    width: 35px;
+}
+.card-title{
+    padding-top: 10px;
+    padding-left: 10px;
+    max-width: 30vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.links{
+    display: inline-block;
+}
+.links a{
+    text-align: left;
+    padding-left: 40px;
+    display: block;
+    font-size: 2.5rem;
+    color: #fff;
+    text-decoration: none;
+    padding-top: 15px;
+    color: #bdbdbd;
+}
+.links a:hover{
+    color: #fff;
+    cursor: pointer;
+}
+.songs-cards{
+    padding: 0px;
+    margin: 0px;
+}
+.playlist-card{
+    width: 100%;
+}
+hr{
+    border-top: 1px solid #424242;
+}
+.music-icon-playlist{
+    margin-right: 50px;
+}
+.number_of_songs{
+    float: right;
+    padding-right: 100px;
+}
+.playlist_add:hover{
+    cursor: pointer;
+     color: white;
+}
+.login_form{
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    position: absolute;
+    left: 50%;
+    top:10%;
+    transform: translate(-50%,0%);
+    width: 40vw;
+}
+
+.log_in_button{
+    background-color: #ff5252;
+    text-decoration: none;
+    outline: none;
+    border: none;
+}
+*:focus {
+    outline: none;
+}
+
+
