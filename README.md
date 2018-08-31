@@ -1,4 +1,4 @@
-# Music Streaming Service
+# Pig Dice game programmed in JavaScript
 ![alt text](https://github.com/dev1203/PHP-Music-App/blob/master/images/songsapp.png)
 
 ### HOW TO CONTIBUTE:
