@@ -16,7 +16,7 @@ let ajax_controller = function(UI) {
         - This call back is to get all the songs
      */
     $("#all_songs").on('click', () => {
-        window.history.pushState({}, '', 'songs');
+        // window.history.pushState({}, '', 'songs');
         // $.get('./controllers/songs_ajax.php', { request:1 }, function(data) {
         //     UI.dom_manupulation("main",data);
         // });
@@ -25,14 +25,14 @@ let ajax_controller = function(UI) {
         - This call back is to get all the playlist
      */
     $("#playlist").on('click',()=>{
-        $.ajax({
-            type: 'GET',
-            url: "./controllers/songs_ajax.php",
-            data: {playlist: "all"},
-            success: function (data) {
-                UI.dom_manupulation("main",data);
-            }
-        });
+        // $.ajax({
+        //     type: 'GET',
+        //     url: "./controllers/songs_ajax.php",
+        //     data: {playlist: "all"},
+        //     success: function (data) {
+        //         UI.dom_manupulation("main",data);
+        //     }
+        // });
     });
     /*
         - This callback is to get the location of the songs which is clicked

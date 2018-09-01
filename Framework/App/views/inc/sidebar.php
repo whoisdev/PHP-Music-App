@@ -18,8 +18,8 @@
 
     <div class="links" id="sidebar">
         <a><button class="sidebar_button active" id="profile">Profile</button></a>
-        <a><button class="sidebar_button" id="all_songs">Songs</button></a>
-        <a><button class="sidebar_button" id="playlist" >Playlists</button></a>
+        <a href='./songs'><button class="sidebar_button" id="all_songs">Songs</button></a>
+        <a href='./playlists'><button class="sidebar_button" id="playlist" >Playlists</button></a>
         <a><button class="sidebar_button">Recent Songs</button></a>
         <a href="add_songs.php"><button class="sidebar_button">Add Songs</button></a>
         <a>

@@ -43,6 +43,7 @@ body,html{
     height: 80vh;
     background-color: #212121;
     overflow-x: hidden;
+    width: 75vw;
 }
 .profile-section{
     text-align: center;

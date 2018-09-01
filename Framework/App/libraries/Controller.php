@@ -1,8 +1,6 @@
 <?php
 /*
-
     - Base Controller will load views and models
-
 */
  class Controller{
 
@@ -12,6 +10,14 @@
         } else{
             die('does Not exists');
         }
+    }
+
+    public function model($model){
+        // Require model file
+        require_once '../App/models/' . $model . '.php';
+  
+        // Instatiate model
+        return new $model();
     }
 
  }

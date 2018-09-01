@@ -1,0 +1,22 @@
+<h2 class="title">{{title}}</h2>
+{% for value in data%}
+<div class="songs-cards">
+    <div class="row">
+        <div class="col-sm-12">
+            <hr>
+            <img src="./images/music.png " class="play_song">
+            <button class="icons song_add_playlist" id={{value.song_id}}><img src="./images/add_to.png" class="play_song"></button>
+            <button class="icons get_song" id={{value.song_id}}><img src="./images/play.png" class="play_song"></button>
+            <span class="song-title">
+                {% if value['name'] | length < 25 %}
+                    {{value.name| replace ({'.mp3':''})}}
+                {% else %}
+                    {{value.name | slice(0,25) ~ '...' }}
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
