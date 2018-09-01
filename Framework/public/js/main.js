@@ -4,22 +4,6 @@ $( document ).ready(function() {
     UI.toggle_class();
     UI.playbar();
     ajax_controller(UI);
-    // window.onload = function (e) {
-    //     get_session().
-    //     then((result)=>{
-    //         console.log(result);
-    //         let obj ={};
-    //         obj[result] = 'all';
-    //         $.ajax({
-    //             type: 'GET',
-    //             url: "./controllers/songs_ajax.php",
-    //             data: obj,
-    //             success: function (data) {
-    //                 UI.dom_manupulation("main",data);
-    //             }
-    //         });
-    //     });
-    // };
 });
 
 let ajax_controller = function(UI) {
@@ -33,9 +17,9 @@ let ajax_controller = function(UI) {
      */
     $("#all_songs").on('click', () => {
         window.history.pushState({}, '', 'songs');
-        $.get('./controllers/songs_ajax.php', { request:1 }, function(data) {
-            UI.dom_manupulation("main",data);
-        });
+        // $.get('./controllers/songs_ajax.php', { request:1 }, function(data) {
+        //     UI.dom_manupulation("main",data);
+        // });
     });
     /*
         - This call back is to get all the playlist

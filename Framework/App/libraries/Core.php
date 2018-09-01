@@ -5,8 +5,8 @@
 */
 class Core{
 
-    protected $currentController = 'pages';
-    protected $currentMethod = 'index';
+    protected $currentController = 'songs';
+    protected $currentMethod = 'all';
 
     public function __construct(){
         $url = $this->getUrl();
@@ -57,7 +57,6 @@ class Core{
             - is add and it will call the method add with $this->params
             - as a parameter
         */
-        print_r($this->currentMethod);
         call_user_func_array([$this->currentController,$this->currentMethod],$this->params);
 
     }
