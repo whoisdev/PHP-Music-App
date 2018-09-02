@@ -59,6 +59,7 @@ body,html{
     background: transparent; /* make scrollbar transparent */
 }
 .songs-div {
+    display: inline-block;
     padding-top: 10px;
     height: 80vh;
     overflow-x: hidden;
@@ -282,7 +283,7 @@ hr{
     display: none;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
    .songs-div{
        display: none;
        position: fixed;
