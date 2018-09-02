@@ -12,13 +12,19 @@ let ajax_controller = function(UI) {
         let data = {
             song_id: id
         };
+        var element = (event.target.parentElement.classList[1]);
+
         $.ajax({
-            url: "./playlist/all",
+            url: "http://localhost/PHP-Music-App/Framework/playlist/ajax",
             data: data
             , success: function (data) {
-                console.log(data);
+                $('#'+id).append(data);
             }
         });
+    });
+    
+    $('body').click(function () {
+        $('.options').hide();
     });
 }
 

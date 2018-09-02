@@ -24,9 +24,10 @@ body,html{
 }
 .dropdown{
     position: relative;
-    display: inline;
+    display: inline-block;
 }
 .options{
+    margin: 0px;
     list-style-type: none;
     position: absolute;
     padding: 0px 10px;
@@ -34,6 +35,12 @@ body,html{
     background: white;
     color: black;
     z-index: 2;
+    width: 30vw;
+
+}
+.values:hover{
+    background: #ff5252;
+    color: white;
 }
 .values{
     /* position: absolute; */
