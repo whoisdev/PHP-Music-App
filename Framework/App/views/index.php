@@ -1,6 +1,6 @@
-<?php  include APPROOT . '/views/inc/header.php' ?>
+<?php  include_once APPROOT . '/views/inc/header.php' ?>
 <?php 
-require('../App/views/inc/sidebar.php');
+require_once('../App/views/inc/sidebar.php');
 require_once '../../vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('../App/templates');
 $twig = new Twig_Environment($loader, array(
@@ -20,4 +20,4 @@ $twig->addExtension(new Twig_Extension_Debug());
 <?php
 ?>
 </div>
-<?php  include APPROOT . '/views/inc/footer.php' ?>
+<?php  include_once APPROOT . '/views/inc/footer.php' ?>

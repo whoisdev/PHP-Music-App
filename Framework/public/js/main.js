@@ -7,8 +7,20 @@ $( document ).ready(function() {
 });
 
 let ajax_controller = function(UI) {
-   
-};
+    $('#main').on('click', '.song_add_playlist', function (){
+        var id = this.id;
+        let data = {
+            song_id: id
+        };
+        $.ajax({
+            url: "./playlist/all",
+            data: data
+            , success: function (data) {
+                console.log(data);
+            }
+        });
+    });
+}
 
 
 let UIcontroller = function () {

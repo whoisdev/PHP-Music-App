@@ -22,6 +22,22 @@ body,html{
     z-index: 2;
     margin: auto auto;
 }
+.dropdown{
+    position: relative;
+    display: inline;
+}
+.options{
+    list-style-type: none;
+    position: absolute;
+    padding: 0px 10px;
+    left: 0px;
+    background: white;
+    color: black;
+    z-index: 2;
+}
+.values{
+    /* position: absolute; */
+}
 .white_link{
     text-decoration: none;
     color:white;

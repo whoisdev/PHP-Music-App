@@ -27,7 +27,7 @@
     <div class="links" id="sidebar">
         <a href=<?php echo URLROOT.'profile/signin'?>><button class="sidebar_button active" id="profile">Profile</button></a>
         <a href=<?php echo URLROOT.'songs/all'?>><button class="sidebar_button" id="all_songs">Songs</button></a>
-        <a href=<?php echo URLROOT.'songs/playlists'?>><button class="sidebar_button" id="playlist" >Playlists</button></a>
+        <a href=<?php echo URLROOT.'playlist/all'?>><button class="sidebar_button" id="playlist" >Playlists</button></a>
         <a><button class="sidebar_button">Recent Songs</button></a>
         <a href="add_songs.php"><button class="sidebar_button">Add Songs</button></a>
         <a>
