@@ -11,6 +11,10 @@ class UserPlaylist{
         return $this->db->resultSet();
     }
 
+    public function all(){
+        return $this->getPlayList();
+    }
+
 }
 
 

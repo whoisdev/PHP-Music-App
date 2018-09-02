@@ -9,6 +9,10 @@ class Playlist extends Controller{
     /*
         - This function will get all the playlist
     */
+    public function all(){
+       $data = $this->playListModel->all();
+       $this->view('playlist',$data);  
+    }
     public function ajax(){
         $result = $this->playListModel->getPlayList();
         ?>

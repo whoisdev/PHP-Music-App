@@ -22,9 +22,20 @@ let ajax_controller = function(UI) {
             }
         });
     });
-    
+    $("#all_songs").on('click', () => {
+        history.pushState({},"",'http://localhost/PHP-Music-App/Framework/songs/all');
+        $.get('http://localhost/PHP-Music-App/Framework/songs/ajax', { request:1 }, function(data) {
+            $("#main").html(data);
+        });
+    });
+
     $('body').click(function () {
         $('.options').hide();
+    });
+    $('#search_query').keyup(()=>{
+        $.get('http://localhost/PHP-Music-App/Framework/songs/search', { request:$('#search_query').val() }, function(data) {
+            $("#main").html(data);
+        });
     });
 }
 

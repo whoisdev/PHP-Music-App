@@ -43,7 +43,7 @@ body,html{
     color: white;
 }
 .values{
-    /* position: absolute; */
+    padding:0  50px;
 }
 .white_link{
     text-decoration: none;
