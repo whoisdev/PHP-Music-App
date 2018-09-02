@@ -2,20 +2,20 @@
     <div class="container">
         <div class="play-bar row">
             <div id="prev" class="col-xs-2">
-                <button class="icons"><img src="images/prev.png"></button>
+                <button class="icons"><img src=<?php echo URLROOT."/images/prev.png"?>></button>
             </div>
             <div class="col-xs-2">
-                <button class="icons"><img src="images/shuffle.png"></button>
+                <button class="icons"><img src=<?php echo URLROOT."/images/shuffle.png"?>></button>
             </div>
             <div id="play" class="col-xs-4">
-                <button class="icons" id="play_song"><img src="images/play.png"></button>
+                <button class="icons" id="play_song"><img src=<?php echo URLROOT."/images/play.png"?>></button>
             </div>
             <div class="col-xs-2">
-                <button class="icons"><img src="images/repeat.png"></button>
+                <button class="icons"><img src=<?php echo URLROOT."/images/repeat.png"?>></button>
             </div>
 
             <div id="next" class="col-xs-2">
-                <button class="icons"><img src="images/next.png"></button>
+                <button class="icons"><img src=<?php echo URLROOT."/images/next.png"?>></button>
             </div>
 
         </div>

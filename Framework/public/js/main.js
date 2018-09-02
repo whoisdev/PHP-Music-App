@@ -7,122 +7,7 @@ $( document ).ready(function() {
 });
 
 let ajax_controller = function(UI) {
-    /*
-        - This function is to check if the user reloaded a page and see what
-        - page the user refreshed on
-     */
-
-    /*
-        - This call back is to get all the songs
-     */
-    $("#all_songs").on('click', () => {
-        // window.history.pushState({}, '', 'songs');
-        // $.get('./controllers/songs_ajax.php', { request:1 }, function(data) {
-        //     UI.dom_manupulation("main",data);
-        // });
-    });
-    /*
-        - This call back is to get all the playlist
-     */
-    $("#playlist").on('click',()=>{
-        // $.ajax({
-        //     type: 'GET',
-        //     url: "./controllers/songs_ajax.php",
-        //     data: {playlist: "all"},
-        //     success: function (data) {
-        //         UI.dom_manupulation("main",data);
-        //     }
-        // });
-    });
-    /*
-        - This callback is to get the location of the songs which is clicked
-        - it will return the name of the file
-     */
-    $('#main').on('click', '.get_song', function (){
-        var id = this.id;
-        $.ajax({
-            url:"./controllers/songs_ajax.php",
-            data:{songid:id}
-            ,success:function(data) {
-                $("#html_player").attr("src",data);
-                UI.song_handle();
-            }
-        });
-    });
-    /*
-        - This callback it to play the song
-     */
-    $('#play_song').on('click',()=>{
-        UI.song_handle();
-    });
-    /*
-        - This callback is to set the time of the player
-     */
-    $('#html_player').on("canplay", function () {
-        $("#start_time").html('0.00');
-        $("#end_time").html(millisToMinutesAndSeconds(this.duration));
-    });
-    /*
-        - This is to search the songs whenever a key is pressed
-     */
-    $("#search_query").keyup(function() {
-        var query = $("#search_query").val();
-        if (query){
-            $.ajax({
-                url: "./controllers/songs_ajax.php",
-                data: {search: query}
-                , success: function (data) {
-                    UI.dom_manupulation("main",data);
-                }
-            });
-        }
-    });
-    /*
-        - This is to play a playlist
-     */
-    $('#main').on('click', '.play_playlist', function (){
-        var id = this.id;
-        $.ajax({
-            url: "./controllers/songs_ajax.php",
-            data: {playlist_get: id}
-            , success: function (data) {
-                UI.dom_manupulation("main",data);
-            }
-        });
-    });
-    /*
-        - Ajax when clicked on profile it will get the user data
-     */
-    $('#sidebar').on('click', '#profile', function (){
-        $.ajax({
-            url: "./controllers/songs_ajax.php",
-            data: {get_user_profile: ''}
-            , success: function (data) {
-                UI.dom_manupulation("main",data);
-            }
-        });
-    });
-
-    $('#main').on('click', '.song_add_playlist', function (){
-        var id = this.id;
-        let data = {
-            song_id: id
-        };
-        $.ajax({
-            url: "./controllers/songs_ajax.php",
-            data: data
-            , success: function (data) {
-                UI.dom_manupulation("sidebar",data);
-            }
-        });
-    });
-
-
-    /*
-        - This function returns a promise which will return the page on which the webpage is reloaded
-     */
-
-
+   
 };
 
 
@@ -131,11 +16,11 @@ let UIcontroller = function () {
     return {
           song_handle : function () {
               if(button.paused == false){
-                  $('#play_song img').attr("src","images/play.png");
+                  $('#play_song img').attr("src","../images/play.png");
                   button.pause();
               }
               else{
-                  $('#play_song img').attr("src","images/pause.png");
+                  $('#play_song img').attr("src","../images/pause.png");
                   button.play();
               }
           },

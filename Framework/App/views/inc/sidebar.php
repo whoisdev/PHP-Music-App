@@ -9,21 +9,29 @@
             </div>
         </div>
     </div>
-    <img src="images/profile.png" alt="..." class="img-thumbnail profile-image">
+    <img src=<?php echo URLROOT."/images/profile.png"?> alt="..." class="img-thumbnail profile-image">
     <div>
         <h3 class="username">
-            <span class="name">{{name}}</span>
+            <span class="name"><?php 
+                if(!empty($_SESSION['username'])){
+                    echo $_SESSION['username'];
+                } else{
+                    ?>
+                    <a class='white_link' href=<?php echo URLROOT.'profile/signin'?>>Sign In</a>
+                    <?php
+                }
+            ?></span>
         </h3>
     </div>
 
     <div class="links" id="sidebar">
-        <a><button class="sidebar_button active" id="profile">Profile</button></a>
-        <a href='./songs'><button class="sidebar_button" id="all_songs">Songs</button></a>
-        <a href='./playlists'><button class="sidebar_button" id="playlist" >Playlists</button></a>
+        <a href=<?php echo URLROOT.'profile/signin'?>><button class="sidebar_button active" id="profile">Profile</button></a>
+        <a href=<?php echo URLROOT.'songs/all'?>><button class="sidebar_button" id="all_songs">Songs</button></a>
+        <a href=<?php echo URLROOT.'songs/playlists'?>><button class="sidebar_button" id="playlist" >Playlists</button></a>
         <a><button class="sidebar_button">Recent Songs</button></a>
         <a href="add_songs.php"><button class="sidebar_button">Add Songs</button></a>
         <a>
-            <form method="post" action="index.php">
+            <form method="post" action=<?php echo URLROOT.'/profile/signout' ?>>
                 <button class="sidebar_button" name="singout">Sign Out</button>
             </form>
         </a>

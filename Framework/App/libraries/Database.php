@@ -55,7 +55,7 @@ class Database{
             default:
             $type = PDO::PARAM_STR;
         }
-        $this->stmt->bindValues($params,$value,$type);
+        $this->stmt->bindValue($params,$value,$type);
     } 
     /*
         - This function will execute what every the query is 

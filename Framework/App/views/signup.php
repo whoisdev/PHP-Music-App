@@ -10,10 +10,8 @@ $twig->addExtension(new Twig_Extension_Debug());
 ?>
 
 <div class="col-sm-8 col-md-8 main-section" id="main"><?php 
-    $songTitle=$data['songs'];
-    echo $twig->render('songs.html',array(
-        'data' => $songTitle,
-        'title' => 'ALL SONGS',
+    echo $twig->render('signup.html',array(
+        'error'=>$data,
         'root'=>URLROOT
     ));
 ?></div>

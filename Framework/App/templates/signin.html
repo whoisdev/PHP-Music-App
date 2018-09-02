@@ -1,0 +1,17 @@
+{% if error|length > 0 %}
+{% for value in error%}
+    <h3 class='banner'>{{value}}</h3>
+{% endfor %}
+{% endif %}
+<form class="login_form" method="post" action="">
+    <h3>Log In to Add Songs to Playlist, Recent Songs.</h3>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter UserName">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <button name="login" type="submit" class="btn btn-primary log_in_button">Log In</button><span>   Not a User you can also <a href="./singup">Sign up</a></span>
+</form>
