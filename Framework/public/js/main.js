@@ -37,6 +37,9 @@ let ajax_controller = function(UI) {
             $("#main").html(data);
         });
     });
+    $("#mobile").on('click',()=>{
+        $(".songs-div").toggle();
+    })
 }
 
 
@@ -72,6 +75,7 @@ let UIcontroller = function () {
             }, false);
         }
       }
+
 };
 
 function millisToMinutesAndSeconds(inputSeconds) {
