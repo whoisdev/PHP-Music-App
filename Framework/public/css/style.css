@@ -138,9 +138,9 @@ body,html{
     outline: none;
     width: 5vw;
 }
-.icons:active {
+/* .icons:active {
     transform: translateY(4px);
-  }
+  } */
 .sidebar_button{
     background-color: transparent;
     border: none;
@@ -217,7 +217,7 @@ body,html{
     margin: 0;
 }
 #html_player{
-    /* display: none; */
+    display: none;
 }
 .add_to{
     width: 35px;

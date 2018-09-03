@@ -2,9 +2,9 @@
 {% for value in data%}
 <div class="songs-cards">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12 playlist_play" id = {{value.playlist_id}}>
             <hr>            
-            <button class="icons get_song" id={{value.song_id}}><img src={{root ~ '/images/play.png'}} class="play_song"></button>
+            <button class="icons"><img src={{root ~ '/images/play.png'}} class="play_song"></button>
             <span class="song-title">
                 {% if value['name'] | length < 25 %}
                     {{value.name| replace ({'.mp3':''})}}

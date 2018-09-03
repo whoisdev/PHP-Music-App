@@ -14,6 +14,9 @@ class UserPlaylist{
     public function all(){
         return $this->getPlayList();
     }
+    public function addToPlaylist($id){
+        $this->db->query("INSERT INTO playlist_assoc (:playlist_id)");
+    }
 
 }
 

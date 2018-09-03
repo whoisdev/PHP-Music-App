@@ -28,10 +28,7 @@
                     </div>
                 </div>
                 <div class="col-xs-2" id="end_time">- -</div>
-                <audio controls>
-                <source src=<?php echo getcwd().'/../music/sadie.mp3' ?> type="audio/mpeg">
-
-                    <!-- <source src="/PHP-Music-App/Framework/music/Hardy_Sandhu_-_Backbone_Jaani_B_Praak_Zenith_Sidhu_Latest_Romantic_Song_2017[ListenVid.com].mp3" type="audio/mpeg"> -->
+                <audio controls id='html_player'>
                     Your browser does not support the audio element.
                 </audio>
             </div>

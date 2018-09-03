@@ -12,12 +12,11 @@ let ajax_controller = function(UI) {
         let data = {
             song_id: id
         };
-        var element = (event.target.parentElement.classList[1]);
-
         $.ajax({
             url: "http://localhost/PHP-Music-App/Framework/playlist/ajax",
             data: data
             , success: function (data) {
+                $('.options').remove();
                 $('#'+id).append(data);
             }
         });
@@ -30,7 +29,7 @@ let ajax_controller = function(UI) {
     });
 
     $('body').click(function () {
-        $('.options').hide();
+        $('.options').html('');
     });
     $('#search_query').keyup(()=>{
         $.get('http://localhost/PHP-Music-App/Framework/songs/search', { request:$('#search_query').val() }, function(data) {
@@ -42,13 +41,31 @@ let ajax_controller = function(UI) {
     })
     $('#main').on('click', '.get_song', function (){
         let id = this.id;
-        console.log(id);
         $.get('http://localhost/PHP-Music-App/Framework/songs/playsong',{ song:id },(data)=>{
-            console.log(JSON.parse(data).location);
-            $('#html_player').html('<source src="../music/activation.mp3" type="audio/mpeg">');
+            $("#html_player").attr("src",JSON.parse(data).location);
+            $('#html_player').crossOrigin = 'anonymous';
             UI.song_handle();
         });
     });
+    $('#play_song').on('click',()=>{
+        UI.song_handle();
+    });
+    $('#html_player').on("canplay", function () {
+        $("#start_time").html('0.00');
+        $("#end_time").html(millisToMinutesAndSeconds(this.duration));
+    });
+    $('#main').on('click', '.values', function (){
+        let id = this.id;
+        var element = $(this).parent().parent().attr('id');
+        let values ={
+            'playlist_id' : id,
+            'song_id' : element
+        };
+        $.post('http://localhost/PHP-Music-App/Framework/playlist/addsong',values,(data)=>{
+            console.log(data);
+        });
+    });
+
 }
 
 
@@ -62,7 +79,7 @@ let UIcontroller = function () {
               }
               else{
                   $('#play_song img').attr("src","../images/pause.png");
-                  button.play();
+                 button.play();
               }
           },
         dom_manupulation : function (id,content) {
@@ -75,13 +92,13 @@ let UIcontroller = function () {
             });
         },
         playbar : function () {
-            // button.addEventListener('timeupdate', (event) => {
-            //     const currentTime = (button.currentTime / button.duration)*100;
-            //     if(currentTime){
-            //         $("#start_time").html(millisToMinutesAndSeconds(button.currentTime));
-            //         $("#played").css('width',currentTime+"%");
-            //     }
-            // }, false);
+            button.addEventListener('timeupdate', (event) => {
+                const currentTime = (button.currentTime / button.duration)*100;
+                if(currentTime){
+                    $("#start_time").html(millisToMinutesAndSeconds(button.currentTime));
+                    $("#played").css('width',currentTime+"%");
+                }
+            }, false);
         }
       }
 
