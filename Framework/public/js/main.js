@@ -40,6 +40,15 @@ let ajax_controller = function(UI) {
     $("#mobile").on('click',()=>{
         $(".songs-div").toggle();
     })
+    $('#main').on('click', '.get_song', function (){
+        let id = this.id;
+        console.log(id);
+        $.get('http://localhost/PHP-Music-App/Framework/songs/playsong',{ song:id },(data)=>{
+            console.log(JSON.parse(data).location);
+            $('#html_player').html('<source src="../music/activation.mp3" type="audio/mpeg">');
+            UI.song_handle();
+        });
+    });
 }
 
 
@@ -66,13 +75,13 @@ let UIcontroller = function () {
             });
         },
         playbar : function () {
-            button.addEventListener('timeupdate', (event) => {
-                const currentTime = (button.currentTime / button.duration)*100;
-                if(currentTime){
-                    $("#start_time").html(millisToMinutesAndSeconds(button.currentTime));
-                    $("#played").css('width',currentTime+"%");
-                }
-            }, false);
+            // button.addEventListener('timeupdate', (event) => {
+            //     const currentTime = (button.currentTime / button.duration)*100;
+            //     if(currentTime){
+            //         $("#start_time").html(millisToMinutesAndSeconds(button.currentTime));
+            //         $("#played").css('width',currentTime+"%");
+            //     }
+            // }, false);
         }
       }
 

@@ -1,3 +1,8 @@
+<?php
+    if(!isset($_SESSION['username'])){
+        session_start();
+    }
+?>
 <div class="col-sm-3 col-md-3 songs-div">
     <div>
         <div class="input-group search">
@@ -28,12 +33,14 @@
         <a href=<?php echo URLROOT.'profile/signin'?>><button class="sidebar_button active" id="profile">Profile</button></a>
         <a><button class="sidebar_button" id="all_songs">Songs</button></a>
         <a href=<?php echo URLROOT.'playlist/all'?>><button class="sidebar_button" id="playlist" >Playlists</button></a>
-        <a><button class="sidebar_button">Recent Songs</button></a>
+        <a><button class="sidebar_button">History</button></a>
         <a href="add_songs.php"><button class="sidebar_button">Add Songs</button></a>
+        <?php if(!empty($_SESSION['username'])) { ?>
         <a>
             <form method="post" action=<?php echo URLROOT.'/profile/signout' ?>>
                 <button class="sidebar_button" name="singout">Sign Out</button>
             </form>
         </a>
+        <?php } ?>
     </div>
 </div>

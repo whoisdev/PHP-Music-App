@@ -42,6 +42,16 @@ class Songs extends Controller{
            ));
         }
     }
+    public function playsong(){
+        if($_SERVER['REQUEST_METHOD']== 'GET'){
+            $song_id = $_GET['song'];
+            $data = [
+                'name'=> $this->postModel->getSongLocation($song_id)->name,
+                'location'=>$this->postModel->getSongLocation($song_id)->location
+            ];
+            echo json_encode($data);
+         }
+    }
 }
 
 ?>
