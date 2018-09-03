@@ -52,6 +52,14 @@ class Songs extends Controller{
             echo json_encode($data);
          }
     }
+    public function history(){
+        $allSongs = $this->postModel->history();
+
+        $data = [
+            'songs'=> $allSongs
+        ];
+        $this->view('index',$data);
+    }
 }
 
 ?>
