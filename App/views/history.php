@@ -13,7 +13,7 @@ $twig->addExtension(new Twig_Extension_Debug());
     $songTitle=$data['songs'];
     echo $twig->render('songs.html',array(
         'data' => $songTitle,
-        'title' => $data['Title'],
+        'title' => 'Your History',
         'root'=>URLROOT
     ));
 ?></div>

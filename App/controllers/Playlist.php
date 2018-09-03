@@ -27,7 +27,11 @@ class Playlist extends Controller{
     public function play($params){
         $params = str_replace("-"," ",$params);
         $data = $this->playListModel->playlist_songs($params);
-        $this->view('playlist',$data);  
+        $data = [
+            'songs'=> $data,
+            'Title'=>'Playlist '.ucwords($params)
+        ];
+        $this->view('index',$data);  
      }
      /*
         - Gives the playlist options to the users

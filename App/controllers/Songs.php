@@ -18,7 +18,8 @@ class Songs extends Controller{
     public function all(){
         $allSongs = $this->postModel->getSongs();
         $data = [
-            'songs'=> $allSongs
+            'songs'=> $allSongs,
+            'Title'=>'All songs'
         ];
         $this->view('index',$data);
     }
@@ -61,7 +62,7 @@ class Songs extends Controller{
                 'name'=> $this->postModel->getSongLocation($song_id)->name,
                 'location'=>$this->postModel->getSongLocation($song_id)->location
             ];
-            echo json_encode($data);
+            echo $data['location'];
          }
     }
     /*
@@ -73,7 +74,7 @@ class Songs extends Controller{
         $data = [
             'songs'=> $allSongs
         ];
-        $this->view('index',$data);
+        $this->view('history',$data);
     }
 }
 
