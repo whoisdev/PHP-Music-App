@@ -18,7 +18,7 @@ class Playlist extends Controller{
             $data = $this->playListModel->all();
             $this->view('playlist',$data); 
         } else{
-            header("location:http://localhost/PHP-Music-App/Framework/profile/signin");
+            header("location:".URLROOT."profile/signin");
         }
     }
     /*
@@ -38,7 +38,7 @@ class Playlist extends Controller{
         <ul class="options">
         <?php
         if(empty($_SESSION['username'])){
-            echo "<li><h4><a href = 'http://localhost/PHP-Music-App/Framework/profile/signin'>Sign In To add Songs to Playlist</a></h4></li>";            
+            echo "<li><h4><a href = 'http://localhost/PHP-Music-App/profile/signin'>Sign In To add Songs to Playlist</a></h4></li>";            
         } else{
             $result = $this->playListModel->getPlayList();
             foreach($result as $val){

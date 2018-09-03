@@ -12,7 +12,7 @@ let ajax_controller = function(UI) {
             song_id: id
         };
         $.ajax({
-            url: "http://localhost/PHP-Music-App/Framework/playlist/ajax",
+            url: "http://localhost/PHP-Music-App/playlist/ajax",
             data: data
             , success: function (data) {
                 $('.options').remove();
@@ -21,8 +21,8 @@ let ajax_controller = function(UI) {
         });
     });
     $("#all_songs").on('click', () => {
-        history.pushState({},"",'http://localhost/PHP-Music-App/Framework/songs/all');
-        $.get('http://localhost/PHP-Music-App/Framework/songs/ajax', { request:1 }, function(data) {
+        history.pushState({},"",'http://localhost/PHP-Music-App/songs/all');
+        $.get('http://localhost/PHP-Music-App/songs/ajax', { request:1 }, function(data) {
             $("#main").html(data);
         });
         if($( window ).width()<='768'){
@@ -34,7 +34,7 @@ let ajax_controller = function(UI) {
         $('.options').html('');
     });
     $('#search_query').keyup(()=>{
-        $.get('http://localhost/PHP-Music-App/Framework/songs/search', { request:$('#search_query').val() }, function(data) {
+        $.get('http://localhost/PHP-Music-App/songs/search', { request:$('#search_query').val() }, function(data) {
             $("#main").html(data);
         });
     });
@@ -43,7 +43,7 @@ let ajax_controller = function(UI) {
     })
     $('#main').on('click', '.get_song', function (){
         let id = this.id;
-        $.get('http://localhost/PHP-Music-App/Framework/songs/playsong',{ song:id },(data)=>{
+        $.get('http://localhost/PHP-Music-App/songs/playsong',{ song:id },(data)=>{
             $("#html_player").attr("src",JSON.parse(data).location);
             $('#html_player').crossOrigin = 'anonymous';
             UI.song_handle();
@@ -64,7 +64,7 @@ let ajax_controller = function(UI) {
             'playlist_id' : id,
             'song_id' : element
         };
-        $.post('http://localhost/PHP-Music-App/Framework/playlist/addsong',values,(data)=>{
+        $.post('http://localhost/PHP-Music-App/playlist/addsong',values,(data)=>{
             $('body').append(data);
             $('.options').html('');
             setTimeout(()=>{
@@ -77,7 +77,7 @@ let ajax_controller = function(UI) {
         let button = event.target;
         button.id = 'submit_playlist';
         $("#submit_playlist").on('click',()=>{
-            $.post('http://localhost/PHP-Music-App/Framework/playlist/add',{name:$('.playlist_name').val()},(data)=>{
+            $.post('http://localhost/PHP-Music-App/playlist/add',{name:$('.playlist_name').val()},(data)=>{
                 $('body').append(data);
                 setTimeout(()=>{
                     $('.message').fadeOut();

@@ -2,7 +2,7 @@
 // This the App root also the App folder
 define('APPROOT',dirname(dirname(__FILE__)));
 // This is the URL name of the site also the public folder
-define('URLROOT','http://localhost/PHP-Music-App/Framework/');
+define('URLROOT','http://localhost/PHP-Music-App/');
 // Site Name
 define('SITENAME',"Dev's MVC");
 /*
