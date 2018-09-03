@@ -8,16 +8,25 @@ class UserPlaylist{
       $this->db->bind(':username',$_SESSION['username']);
       $this->user_id = $this->db->result()->user_id; 
     }
-
+    /*
+        - Gets all the playlist for the active user
+    */
     public function getPlayList(){
-        $this->db->query("SELECT * FROM playlist WHERE user_id = :user_id");
+        $this->db->query("
+        SELECT * FROM playlist 
+        WHERE user_id = :user_id");
         $this->db->bind(':user_id',$this->user_id);
         return $this->db->resultSet();
     }
-
+    /*
+        - Gets all the playlist for the active user
+    */
     public function all(){
         return $this->getPlayList();
     }
+    /*
+        - Add a song into playlist
+    */
     public function addToPlaylist($playlist_id,$song_id){
         $this->db->query("
         INSERT INTO playlist_assoc (playlist_id,song_id) 
@@ -27,6 +36,9 @@ class UserPlaylist{
         $this->db->bind(':song_id',$song_id);
         return $this->db->execute();
     }
+    /*
+        - Gets all the songs in the playlist
+    */
     public function playlist_songs($name){
         $this->db->query("
             SELECT playlist_id 
@@ -45,6 +57,9 @@ class UserPlaylist{
         $this->db->bind(':playlist_id',$playlist_id);
         return ($this->db->resultSet());
     }
+    /*
+        - Add a playlist
+    */
     public function addPlaylist($name){
         $this->db->query("
             INSERT INTO playlist (name,user_id) VALUES (:name,:user_id); 
@@ -54,7 +69,6 @@ class UserPlaylist{
         return $this->db->execute();
 
     }
-
 }
 
 

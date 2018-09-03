@@ -1,7 +1,6 @@
 //Driver Functions
 $( document ).ready(function() {
     var UI = UIcontroller();
-    UI.toggle_class();
     UI.playbar();
     ajax_controller(UI);
 });
@@ -26,6 +25,9 @@ let ajax_controller = function(UI) {
         $.get('http://localhost/PHP-Music-App/Framework/songs/ajax', { request:1 }, function(data) {
             $("#main").html(data);
         });
+        if($( window ).width()<='768'){
+            $('.songs-div').fadeOut();
+        }
     });
 
     $('body').click(function () {
@@ -45,6 +47,7 @@ let ajax_controller = function(UI) {
             $("#html_player").attr("src",JSON.parse(data).location);
             $('#html_player').crossOrigin = 'anonymous';
             UI.song_handle();
+            $("#title_name").html(JSON.parse(data).name);
         });
     });
     $('#play_song').on('click',()=>{
@@ -83,7 +86,6 @@ let ajax_controller = function(UI) {
             });
         });
     });
-
 }
 
 
@@ -102,12 +104,6 @@ let UIcontroller = function () {
           },
         dom_manupulation : function (id,content) {
             $("#"+id).html(content);
-        },
-        toggle_class : function () {
-            $('.sidebar_button').on('click',(e)=>{
-                $( ".sidebar_button").removeClass( "active" );
-                $(this).toggleClass("active");
-            });
         },
         playbar : function () {
             button.addEventListener('timeupdate', (event) => {
@@ -135,20 +131,4 @@ function millisToMinutesAndSeconds(inputSeconds) {
     }
 
     return minutes + ':' + seconds;
-}
-
-function get_session(){
-    return new Promise((resolve,reject)=>{
-        $.ajax({
-            type: 'GET',
-            url: "./controllers/songs_ajax.php",
-            data: {get_session:'current'},
-            success: function (data) {
-                resolve(data);
-            },
-            error: function (error) {
-                reject(error);
-            }
-        });
-    })
 }

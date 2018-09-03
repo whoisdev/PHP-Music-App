@@ -33,15 +33,27 @@ class Songs extends Controller{
             'root'=>URLROOT
         ));
     }
+    /*
+        - AJAX search for songs
+    */
     public function search(){
         if($_SERVER['REQUEST_METHOD']== 'GET'){
+           $data = $this->postModel->search($_GET['request']);
+           if(empty($data)){
+               $title = 'Sorry no results Found :(';
+           } else{
+               $title = 'Your Search Result';
+           }
            echo $this->twig->render('songs.html',array(
-               'data'=>$this->postModel->search($_GET['request']),
-               'title'=>'Your Search Result',
+               'data'=>$data,
+               'title'=>$title,
                 'root'=>URLROOT
            ));
         }
     }
+    /*
+        - AJAX search for getting the location of the song 
+    */
     public function playsong(){
         if($_SERVER['REQUEST_METHOD']== 'GET'){
             $song_id = $_GET['song'];
@@ -52,6 +64,9 @@ class Songs extends Controller{
             echo json_encode($data);
          }
     }
+    /*
+        - Will return all the history of the active user.
+    */
     public function history(){
         $allSongs = $this->postModel->history();
 

@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION['username'])){
+if(!isset($_SESSION)){
     session_start();
 }
 class Playlist extends Controller{
@@ -21,14 +21,18 @@ class Playlist extends Controller{
             header("location:http://localhost/PHP-Music-App/Framework/profile/signin");
         }
     }
-
+    /*
+        - returns the songs in the playlist requested
+    */
     public function play($params){
         $params = str_replace("-"," ",$params);
         $data = $this->playListModel->playlist_songs($params);
-        $this->view('playlist',$data); 
-        
+        $this->view('playlist',$data);  
      }
-
+     /*
+        - Gives the playlist options to the users
+        - when clicked on add to playlist
+     */
     public function ajax(){
         ?>
         <ul class="options">
@@ -45,32 +49,36 @@ class Playlist extends Controller{
         </ul>
         <?php
     }
+    /*
+        - Add the song to the playlist when selected
+    */
     public function addsong(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $playlist_id = $_POST['playlist_id'];
             $song_id = $_POST['song_id'];
             if($this->playListModel->addToPlaylist($playlist_id,$song_id)){
                 echo "<h3 class='message success'>SUCCESS</h3>";
-            }
-            else{
+            } else{
                 echo "<h3 class='message banner'>ERROR OCCURED</h3>";
             }
+        } else{
+            $this->all();
         }
     }
+    /*
+        - Adding playlist using Ajax 
+    */
     public function add(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $name = $_POST['name'];
             if($this->playListModel->addPlaylist($name)){
                 echo "<h3 class='message success'>SUCCESS</h3>";
-            }
-            else{
+            } else{
                 echo "<h3 class='message banner'>ERROR OCCURED</h3>";
             }
-        }
-        else{
+        } else{
             $this->all();
         }
     }
 }
-
 ?>

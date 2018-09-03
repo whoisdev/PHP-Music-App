@@ -1,12 +1,16 @@
 <?php
-
+if(!isset($_SESSION)){
+    session_start();
+}
 class User{
     private $db;
 
     public function __construct(){
       $this->db = new Database;
     }
-
+    /*
+        - Log in a user and set the session
+    */
     public function login($values){
         $this->db->query("SELECT password FROM users WHERE username = :username");
         $this->db->bind(':username',$values['username']);
@@ -15,11 +19,13 @@ class User{
             $_SESSION['username'] = $values['username'];
             return true;
         } else{
-            $_SESSION['username'] = null;
+            unset($_SESSION['username']);
             return false;
         }
     }
-
+    /*
+        - Sign up a user and set the session.
+    */
     public function signup($values){
         $this->db->query('INSERT INTO users (username,password) VALUES (:username,:password)');
         $this->db->bind(':username', $values['username']);
@@ -30,8 +36,5 @@ class User{
             $_SESSION['username'] = $values['username'];
         }
     }
-
 }
-
-
 ?>

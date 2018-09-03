@@ -8,6 +8,9 @@ class Profile extends Controller{
         $this->db = new Database;
         $this->userModel = $this->model('User');
     }
+    /*
+        - Sign in a user when requested with a correct username and password
+    */
     public function signin(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $values = [
@@ -23,7 +26,6 @@ class Profile extends Controller{
                 $this->view('signin',$data);
             } else{
                 if($this->userModel->login($values)){
-                    $values['username'] = $values['username'];
                     header('location:'.URLROOT.'songs/all');
                 }
                 else{
@@ -38,6 +40,9 @@ class Profile extends Controller{
             $this->view('signin',$data);
         }
     }
+    /*
+        - Sign up a user when requested with a correct username and password
+    */
     public function singup(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $values = [
@@ -53,7 +58,6 @@ class Profile extends Controller{
                 $this->view('signup',$data);
             } else{
                 $this->userModel->signup($values);
-                $_SESSION['username'] = $values['username'];
                 header('location:'.URLROOT.'songs/all');
             }
         } else{
@@ -63,6 +67,9 @@ class Profile extends Controller{
             $this->view('signup',$data);
         }
     }
+    /*
+        - Sign out a user
+    */
     public function signout(){
         unset($_SESSION['username']);
         header('location:'.URLROOT.'songs/all');        
