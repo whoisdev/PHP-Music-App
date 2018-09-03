@@ -62,7 +62,25 @@ let ajax_controller = function(UI) {
             'song_id' : element
         };
         $.post('http://localhost/PHP-Music-App/Framework/playlist/addsong',values,(data)=>{
-            console.log(data);
+            $('body').append(data);
+            $('.options').html('');
+            setTimeout(()=>{
+                $('.message').fadeOut();
+            },500);
+        });
+    });
+    $('.add').on('click',()=>{
+        $('.playlist_name').fadeIn();
+        let button = event.target;
+        button.id = 'submit_playlist';
+        $("#submit_playlist").on('click',()=>{
+            $.post('http://localhost/PHP-Music-App/Framework/playlist/add',{name:$('.playlist_name').val()},(data)=>{
+                $('body').append(data);
+                setTimeout(()=>{
+                    $('.message').fadeOut();
+                    location.reload();
+                },500);
+            });
         });
     });
 

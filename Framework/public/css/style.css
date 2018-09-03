@@ -22,6 +22,20 @@ body,html{
     z-index: 2;
     margin: auto auto;
 }
+.success{
+    position: fixed;
+    padding: 0px;
+    margin: 0px;
+    top:0px;
+    left:0px;
+    background-color: #32c24d;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 5%;
+    z-index: 2;
+    margin: auto auto;
+}
 .dropdown{
     position: relative;
     display: inline-block;
@@ -48,6 +62,9 @@ body,html{
 .white_link{
     text-decoration: none;
     color:white;
+}
+.white_link:hover{
+    color: white;
 }
 #icon{
     position: fixed;
@@ -86,6 +103,8 @@ body,html{
     background-color: #212121;
     overflow-x: hidden;
     width: 75vw;
+    padding-top:50px;
+    padding-bottom: 100px;
 }
 .profile-section{
     text-align: center;
@@ -101,6 +120,25 @@ body,html{
     font-size: 15px;
     border-radius: 25px;
     border: none;
+}
+
+.add{
+    display: inline-block;
+    margin: auto;
+    max-width: 100vw;
+    padding: 15px;
+    background-color: #32c24d;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 25px;
+    border: none;
+    text-align: center;
+}
+.add_playlist:hover{
+    cursor: pointer;
+}
+.add:active{
+    transform: translateY(4px);
 }
 /*.name{*/
     /*padding: 10px;*/
@@ -121,7 +159,9 @@ body,html{
     background-color: #424242;
     padding: 0px;
     margin: 0px;
+    max-height: 25vh;
 }
+
 .play-bar{
     text-align: center;
     width: 50vw;
@@ -195,6 +235,14 @@ body,html{
 .card{
     display: inline-block;
     margin-left: 10px;
+}
+.playlist_name{
+    display: none;
+    /* display: inline-block; */
+    width: 30vw;
+}
+.add{
+    min-width: 100px;
 }
 .play_song{
     width: 40px;
@@ -298,6 +346,7 @@ hr{
    }
    #main{
        width: 100vw;
+       padding-bottom: 100px;
    }
    #mobile{
     display: block;
@@ -310,5 +359,10 @@ hr{
   }
   .singup_link{
       display: block;
+  }
+  .add_playlist{
+      position: fixed;
+      top:10px;
+      right: 10px;
   }
 }

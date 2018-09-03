@@ -23,6 +23,7 @@ class Profile extends Controller{
                 $this->view('signin',$data);
             } else{
                 if($this->userModel->login($values)){
+                    $values['username'] = $values['username'];
                     header('location:'.URLROOT.'songs/all');
                 }
                 else{
@@ -52,6 +53,7 @@ class Profile extends Controller{
                 $this->view('signup',$data);
             } else{
                 $this->userModel->signup($values);
+                $_SESSION['username'] = $values['username'];
                 header('location:'.URLROOT.'songs/all');
             }
         } else{
@@ -62,7 +64,7 @@ class Profile extends Controller{
         }
     }
     public function signout(){
-        $_SESSION['username'] = '';
+        unset($_SESSION['username']);
         header('location:'.URLROOT.'songs/all');        
     }
 }

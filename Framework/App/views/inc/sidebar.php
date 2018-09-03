@@ -1,5 +1,5 @@
 <?php
-    if(!isset($_SESSION['username'])){
+    if(empty($_SESSION)){
         session_start();
     }
 ?>
@@ -33,9 +33,10 @@
         <a href=<?php echo URLROOT.'profile/signin'?>><button class="sidebar_button active" id="profile">Profile</button></a>
         <a><button class="sidebar_button" id="all_songs">Songs</button></a>
         <a href=<?php echo URLROOT.'playlist/all'?>><button class="sidebar_button" id="playlist" >Playlists</button></a>
-        <a><button class="sidebar_button">History</button></a>
         <a href="add_songs.php"><button class="sidebar_button">Add Songs</button></a>
         <?php if(!empty($_SESSION['username'])) { ?>
+        <a href =<?php echo URLROOT.'songs/history'?>><button class="sidebar_button">History</button></a>
+
         <a>
             <form method="post" action=<?php echo URLROOT.'/profile/signout' ?>>
                 <button class="sidebar_button" name="singout">Sign Out</button>

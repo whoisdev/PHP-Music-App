@@ -57,6 +57,7 @@ class Core{
             - is add and it will call the method add with $this->params
             - as a parameter
         */
+
         call_user_func_array([$this->currentController,$this->currentMethod],$this->params);
 
     }

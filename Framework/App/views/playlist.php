@@ -14,7 +14,8 @@ $twig->addExtension(new Twig_Extension_Debug());
     echo $twig->render('playlist.html',array(
         'data'=>$data,
         'root'=>URLROOT,
-        'title'=>'Your Playlists'
+        'title'=>'Your Playlists',
+        'url'=>URLROOT.'playlist/play/'
     ));
 ?></div>
 <?php

@@ -1,5 +1,11 @@
+<div class="forms_playlist">
+    <input name="playlist_name" type="text" class="form-control playlist_name" placeholder="Enter playlistname">    
+    <h3 class="add">Add</h3>
+</div>
+
 <h2 class="title">{{title}}</h2>
 {% for value in data%}
+<a class="white_link" href={{((url ~ value.name)|trim )| replace({' ':'-'})}}>
 <div class="songs-cards">
     <div class="row">
         <div class="col-sm-12 playlist_play" id = {{value.playlist_id}}>
@@ -15,6 +21,7 @@
         </div>
     </div>
 </div>
+</a>
 {% endfor %}
 
 
