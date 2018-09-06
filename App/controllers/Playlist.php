@@ -42,7 +42,7 @@ class Playlist extends Controller{
         <ul class="options">
         <?php
         if(empty($_SESSION['username'])){
-            echo "<li><h4><a href = 'http://localhost/PHP-Music-App/profile/signin'>Sign In To add Songs to Playlist</a></h4></li>";            
+            echo "<li><h4><a href = 'https://musify-dev1203.c9users.io/profile/signin'>Sign In To add Songs to Playlist</a></h4></li>";            
         } else{
             $result = $this->playListModel->getPlayList();
             foreach($result as $val){

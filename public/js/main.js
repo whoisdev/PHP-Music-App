@@ -12,16 +12,17 @@ let ajax_controller = function(UI) {
             song_id: id
         };
         $.ajax({
-            url: "http://localhost/PHP-Music-App/playlist/ajax",
+            url: "https://musify-dev1203.c9users.io/playlist/ajax",
             data: data
             , success: function (data) {
                 $('.options').remove();
                 $('#'+id).append(data);
-            }
+            },
+
         });
     });
     $("#all_songs").on('click', () => {
-        history.pushState({},"",'http://localhost/PHP-Music-App/songs/all');
+        history.pushState({},"",'songs/all');
         $.get('http://localhost/PHP-Music-App/songs/ajax', { request:1 }, function(data) {
             $("#main").html(data);
         });
@@ -34,7 +35,7 @@ let ajax_controller = function(UI) {
         $('.options').html('');
     });
     $('#search_query').keyup(()=>{
-        $.get('http://localhost/PHP-Music-App/songs/search', { request:$('#search_query').val() }, function(data) {
+        $.get('https://musify-dev1203.c9users.io/songs/search', { request:$('#search_query').val() }, function(data) {
             $("#main").html(data);
         });
     });
@@ -43,7 +44,7 @@ let ajax_controller = function(UI) {
     })
     $('#main').on('click', '.get_song', function (){
         let id = this.id;
-        $.get('http://localhost/PHP-Music-App/songs/playsong',{ song:id },(data)=>{
+        $.get('https://musify-dev1203.c9users.io/songs/playsong',{ song:id },(data)=>{
             $("#html_player").attr("src",data);
             // console.log(JSON.parse(data).location);
             UI.song_handle();
@@ -63,7 +64,7 @@ let ajax_controller = function(UI) {
             'playlist_id' : id,
             'song_id' : element
         };
-        $.post('http://localhost/PHP-Music-App/playlist/addsong',values,(data)=>{
+        $.post('https://musify-dev1203.c9users.io/playlist/addsong',values,(data)=>{
             $('body').append(data);
             $('.options').html('');
             setTimeout(()=>{
@@ -76,7 +77,7 @@ let ajax_controller = function(UI) {
         let button = event.target;
         button.id = 'submit_playlist';
         $("#submit_playlist").on('click',()=>{
-            $.post('http://localhost/PHP-Music-App/playlist/add',{name:$('.playlist_name').val()},(data)=>{
+            $.post('https://musify-dev1203.c9users.io/playlist/add',{name:$('.playlist_name').val()},(data)=>{
                 $('body').append(data);
                 setTimeout(()=>{
                     $('.message').fadeOut();

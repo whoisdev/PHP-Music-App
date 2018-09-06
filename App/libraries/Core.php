@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 /*
     - This is the core library that will be used to get the URL 
     - and load the current view
@@ -24,7 +25,7 @@ class Core{
             - This will require the correct controller from the 
             - controllers folder
         */
-        require_once '../App/controllers/' . $this->currentController . '.php';
+        require_once '../App/controllers/' . ucwords($this->currentController) . '.php';
         /* 
             - This will initilize the current controller 
             - For eg : if the url is /page/add

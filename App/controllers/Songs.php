@@ -1,5 +1,6 @@
 <?php
-require_once '../../vendor/autoload.php';
+header('Access-Control-Allow-Origin: *');
+require_once APPROOT.'/../vendor/autoload.php';
 class Songs extends Controller{
     private $db;
     private $twig;
