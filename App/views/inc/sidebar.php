@@ -1,8 +1,3 @@
-<?php
-    if(empty($_SESSION)){
-        session_start();
-    }
-?>
 <div class="col-sm-3 col-md-3 songs-div">
     <div>
         <div class="input-group search">
