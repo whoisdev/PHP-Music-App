@@ -44,6 +44,7 @@ let ajax_controller = function(UI) {
     $('#main').on('click', '.get_song', function (){
         let id = this.id;
         $.get('http://localhost/PHP-Music-App/songs/playsong',{ song:id },(data)=>{
+            console.log(data);
             $("#html_player").attr("src",data);
             // console.log(JSON.parse(data).location);
             UI.song_handle();
