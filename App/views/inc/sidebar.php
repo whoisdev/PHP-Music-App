@@ -25,7 +25,9 @@
     </div>
 
     <div class="links" id="sidebar">
-        <a href=<?php echo URLROOT.'profile/signin'?>><button class="sidebar_button active" id="profile">Profile</button></a>
+       <?php  if(empty($_SESSION['username'])) { ?>
+            <a href=<?php echo URLROOT.'profile/signin'?>><button class="sidebar_button active" id="profile">Profile</button></a>
+       <?php } ?>
         <a><button class="sidebar_button" id="all_songs">Songs</button></a>
         <a href=<?php echo URLROOT.'playlist/all'?>><button class="sidebar_button" id="playlist" >Playlists</button></a>
         <?php if(!empty($_SESSION['username'])) { ?>
