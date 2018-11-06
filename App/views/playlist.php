@@ -15,7 +15,7 @@ $twig->addExtension(new Twig_Extension_Debug());
         'data'=>$data,
         'root'=>URLROOT,
         'title'=>'Your Playlists',
-        'url'=>URLROOT.'playlist/play/'
+        'url'=>URLROOT.'playlist/play/',
     ));
 ?></div>
 <?php

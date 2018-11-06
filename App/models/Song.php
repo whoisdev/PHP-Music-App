@@ -53,7 +53,7 @@ class Song{
             SELECT songs.song_id,
             name,location FROM songs JOIN history
             ON songs.song_id = history.song_id 
-            WHERE user_id = :user_id GROUP BY song_id
+            WHERE user_id = :user_id
         ");
         $this->db->bind(':user_id',$this->user_id);
         return $this->db->resultSet();

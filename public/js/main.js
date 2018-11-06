@@ -44,13 +44,11 @@ let ajax_controller = function(UI) {
     $('#main').on('click', '.get_song', function (){
         let id = this.id;
         $.get('http://localhost/PHP-Music-App/songs/playsong',{ song:id },(data)=>{
-            console.log(data);
             $("#html_player").html(`<source src="${data}" type="audio/mpeg"/>`);
-            // console.log(JSON.parse(data).location);
             UI.song_handle();
         });
     });
-    $('#play_song').on('click',()=>{
+    $('#play').on('click',()=>{
         UI.song_handle();
     });
     $('#html_player').on("canplay", function () {
@@ -94,12 +92,13 @@ let UIcontroller = function () {
     return {
           song_handle : function () {
               if(button.paused == false){
-                  $('#play_song img').attr("src","../images/play.png");
-                  button.pause();
+                console.log("here");
+                $('#play img').attr("src","../images/play.png");
+                button.pause();
               }
               else{
-                  $('#play_song img').attr("src","../images/pause.png");
-                 button.play();
+                $('#play img').attr("src","../images/pause.png");
+                button.play();
               }
           },
         dom_manupulation : function (id,content) {
