@@ -18,6 +18,16 @@ class Addsong extends controller{
             $this->view('addsong');
         }
     }
+    public function submit(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $sourcePath = $_FILES['music_file']['tmp_name'];
+            $targetPath = "./music/" . $_FILES['music_file']['name'];
+            if(move_uploaded_file($sourcePath,$targetPath)){
+                $this->addSongModel->addSong($_FILES['music_file']['name'],'../music/'.$_FILES['music_file']['name']);
+                header("location:index.php");
+            }
+        }
+    }
 }
 
 ?>

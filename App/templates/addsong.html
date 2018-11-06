@@ -1,3 +1,7 @@
-<div class = 'drop_down'>
-    
-</div>
+<h3 class='centred'>Drag and drop a file to add song</h3>
+<form id="add_songs" enctype="multipart/form-data" class="form-action" method="post" action="{{root ~ 'addsong/submit'}}"">
+    <div class="centered-image">
+        <input type="file" class="form-control" name="music_file">
+        <button class="input-group add_song" name="add_song">Add Song</button>
+    </div>
+</form>

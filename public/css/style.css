@@ -381,3 +381,30 @@ hr{
       transform: translate(0,-50%);
   }
 }
+#add_songs{
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    border: 1px dashed #333;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.centered-image{
+    text-align: center;
+    position: absolute;
+    top:40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.add_song{
+    border: none;
+    border-radius: 25px;
+    background-color: #ff5252;
+    display: inline;
+    margin-top: 50px;
+    padding: 10px;
+}
+.centred{
+    text-align: center;
+}
