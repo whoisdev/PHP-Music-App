@@ -17,6 +17,9 @@ class Database{
     */
     public function __construct(){
         //Set DSN;
+        if($this->dbh !== null){
+            return $this->dbh;
+        }
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->database;
         $options = [
             // Will check if the connection is already established
