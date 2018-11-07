@@ -62,7 +62,8 @@ class Songs extends Controller{
                 'name'=> $this->postModel->getSongLocation($song_id)->name,
                 'location'=>$this->postModel->getSongLocation($song_id)->location
             ];
-            echo $data['location'];
+            $response = json_encode($data);
+            echo $response;
          }
     }
     /*

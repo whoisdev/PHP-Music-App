@@ -1,4 +1,5 @@
 //Driver Functions
+const site_url = 'http://localhost/PHP-Music-App';
 $( document ).ready(function() {
     var UI = UIcontroller();
     UI.playbar();
@@ -12,7 +13,7 @@ let ajax_controller = function(UI) {
             song_id: id
         };
         $.ajax({
-            url: "http://localhost/PHP-Music-App/playlist/ajax",
+            url: `${site_url}/ajax`,
             data: data
             , success: function (data) {
                 $('.options').remove();
@@ -21,8 +22,8 @@ let ajax_controller = function(UI) {
         });
     });
     $("#all_songs").on('click', () => {
-        history.pushState({},"",'http://localhost/PHP-Music-App/songs/all');
-        $.get('http://localhost/PHP-Music-App/songs/ajax', { request:1 }, function(data) {
+        history.pushState({},"",`${site_url}/songs/all`);
+        $.get(`${site_url}/songs/ajax`, { request:1 }, function(data) {
             $("#main").html(data);
         });
         if($( window ).width()<='768'){
@@ -34,7 +35,7 @@ let ajax_controller = function(UI) {
         $('.options').html('');
     });
     $('#search_query').keyup(()=>{
-        $.get('http://localhost/PHP-Music-App/songs/search', { request:$('#search_query').val() }, function(data) {
+        $.get(`${site_url}/songs/search`, { request:$('#search_query').val() }, function(data) {
             $("#main").html(data);
         });
     });
@@ -43,9 +44,16 @@ let ajax_controller = function(UI) {
     })
     $('#main').on('click', '.get_song', function (){
         let id = this.id;
-        $.get('http://localhost/PHP-Music-App/songs/playsong',{ song:id },(data)=>{
-            $("#html_player").html(`<source src="${data}" type="audio/mpeg"/>`);
+        $.get(`${site_url}/songs/playsong`,{ song:id },(data)=>{
+            let button = $('#html_player')[0];
+            // if(button.paused == false){
+
+            // }
+            data = JSON.parse(data);
             UI.song_handle();
+            $("#html_player").html(`<source src="${data.location}" type="audio/mpeg"/>`);
+            // UI.song_handle();
+            // window.history.pushState({},"",`${site_url}/songs/playsong?song=${id}`);
         });
     });
     $('#play').on('click',()=>{
@@ -62,7 +70,7 @@ let ajax_controller = function(UI) {
             'playlist_id' : id,
             'song_id' : element
         };
-        $.post('http://localhost/PHP-Music-App/playlist/addsong',values,(data)=>{
+        $.post(`${site_url}/playlist/addsong`,values,(data)=>{
             $('body').append(data);
             $('.options').html('');
             setTimeout(()=>{
@@ -70,12 +78,21 @@ let ajax_controller = function(UI) {
             },500);
         });
     });
+    $('#mute').on('click',()=>{
+        let button = $('#html_player')[0];
+        if(button.muted){
+            button.muted = false;
+        }
+        else{
+            button.muted = true;
+        }
+    });
     $('.add').on('click',()=>{
         $('.playlist_name').fadeIn();
         let button = event.target;
         button.id = 'submit_playlist';
         $("#submit_playlist").on('click',()=>{
-            $.post('http://localhost/PHP-Music-App/playlist/add',{name:$('.playlist_name').val()},(data)=>{
+            $.post(`${site_url}/playlist/add`,{name:$('.playlist_name').val()},(data)=>{
                 $('body').append(data);
                 setTimeout(()=>{
                     $('.message').fadeOut();
@@ -92,7 +109,6 @@ let UIcontroller = function () {
     return {
           song_handle : function () {
               if(button.paused == false){
-                console.log("here");
                 $('#play img').attr("src","../images/play.png");
                 button.pause();
               }

@@ -10,8 +10,8 @@
             <div id="play" class="col-xs-4 playbar_button">
                 <img src=<?php echo URLROOT."/images/play.png"?>>
             </div>
-            <div class="col-xs-2 playbar_button">
-                <img src=<?php echo URLROOT."/images/repeat.png"?>>
+            <div id='mute' class="col-xs-2 playbar_button">
+                <img src=<?php echo URLROOT."/images/mute.png"?>>
             </div>
 
             <div id="next" class="col-xs-2 playbar_button">
