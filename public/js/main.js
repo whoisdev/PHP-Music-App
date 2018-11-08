@@ -44,16 +44,14 @@ let ajax_controller = function(UI) {
     })
     $('#main').on('click', '.get_song', function (){
         let id = this.id;
-        $.get(`${site_url}/songs/playsong`,{ song:id },(data)=>{
-            let button = $('#html_player')[0];
-            // if(button.paused == false){
-
-            // }
-            data = JSON.parse(data);
-            UI.song_handle();
-            $("#html_player").html(`<source src="${data.location}" type="audio/mpeg"/>`);
-            // UI.song_handle();
-            // window.history.pushState({},"",`${site_url}/songs/playsong?song=${id}`);
+        $.ajax({
+            url:`${site_url}/songs/playsong`,
+            type: 'get',
+            data : { song:id, isajax:'true'},
+            success : function (response){
+                response = JSON.parse(response);
+                handle_song(response, id);           
+            }
         });
     });
     $('#play').on('click',()=>{
@@ -132,6 +130,16 @@ let UIcontroller = function () {
       }
 
 };
+
+function handle_song(response, id){
+    let button = $('#html_player')[0];
+    let source = document.getElementById('audiosrc');
+    source.src = response.location;
+    button.load();
+    button.play(); 
+    $('#play img').attr("src","../images/pause.png"); 
+    window.history.pushState({},"",`${site_url}/songs/playsong?song=${id}`); 
+}
 
 function millisToMinutesAndSeconds(inputSeconds) {
     const secs = parseInt( inputSeconds, 10 );

@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-xs-2 playbar_button" id="end_time">- -</div>
                 <audio id='html_player' controls="controls">
-                    Your browser does not support the audio element.
+                    <source src=" " id='audiosrc' type="audio/mpeg"/>
                 </audio>
             </div>
         </div>
