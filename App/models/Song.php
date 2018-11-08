@@ -40,8 +40,19 @@ class Song{
             $this->add_history($this->user_id,$id);
         }
         $this->db->query("
-            SELECT name,location FROM songs
-            WHERE song_id = :id");
+        SELECT name,location FROM songs
+        WHERE song_id = :id");
+        $this->db->bind(':id',$id);
+        return $this->db->result();
+    }
+
+    public function getNextSong($id){
+        if(!empty($_SESSION['username'])){
+            $this->add_history($this->user_id,$id);
+        }
+        $this->db->query("
+        SELECT count(*) AS total FROM songs
+        ");
         $this->db->bind(':id',$id);
         return $this->db->result();
     }

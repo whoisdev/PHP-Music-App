@@ -99,6 +99,21 @@ let ajax_controller = function(UI) {
             });
         });
     });
+    $('#next').on('click',()=>{
+        var id_current = getUrlParameter('song');
+        if(id_current){
+            $.ajax({
+                url:`${site_url}/songs/getnextsong`,
+                type: 'get',
+                data : { song: id_current },
+                success : function (response){
+                    console.log(response);
+                    // response = JSON.parse(response);
+                    // handle_song(response, id);           
+                }
+            });
+        }
+    });
 }
 
 
@@ -155,3 +170,17 @@ function millisToMinutesAndSeconds(inputSeconds) {
 
     return minutes + ':' + seconds;
 }
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
