@@ -4,7 +4,7 @@
 */
  class Controller{
 
-    public function view($view, $data = [], $script = null){
+    public function view($view, $data = [], $script = null, $title = null){
         if(file_exists('../App/views/' . $view .'.php')){
             require_once '../App/views/' . $view .'.php';
         } else{

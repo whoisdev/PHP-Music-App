@@ -3,6 +3,7 @@ require_once '../../vendor/autoload.php';
 class Songs extends Controller{
     private $db;
     private $twig;
+    private $script = 'songs.js';
     public function __construct(){
         $this->db = new Database;
         $this->postModel = $this->model('Song');
@@ -21,7 +22,7 @@ class Songs extends Controller{
             'songs'=> $allSongs,
             'Title'=>'All songs'
         ];
-        $this->view('index',$data);
+        $this->view('index',$data,$this->script);
     }
     /*
         - This Function Will get all the playlist for the user

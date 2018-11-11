@@ -85,20 +85,6 @@ let ajax_controller = function(UI) {
             button.muted = true;
         }
     });
-    // $('.add').on('click',()=>{
-    //     $('.playlist_name').fadeIn();
-    //     let button = event.target;
-    //     button.id = 'submit_playlist';
-    //     $("#submit_playlist").on('click',()=>{
-    //         $.post(`${site_url}/playlist/add`,{name:$('.playlist_name').val()},(data)=>{
-    //             $('body').append(data);
-    //             setTimeout(()=>{
-    //                 $('.message').fadeOut();
-    //                 location.reload();
-    //             },500);
-    //         });
-    //     });
-    // });
     $('#next').on('click',()=>{
         var id_current = getUrlParameter('song');
         if(id_current){
@@ -107,9 +93,7 @@ let ajax_controller = function(UI) {
                 type: 'get',
                 data : { song: id_current },
                 success : function (response){
-                    console.log(response);
-                    // response = JSON.parse(response);
-                    // handle_song(response, id);           
+                    console.log(response);         
                 }
             });
         }
@@ -145,6 +129,12 @@ let UIcontroller = function () {
       }
 
 };
+$('.play').bind('click', function (ev) {
+    var $div = $(ev.target);
+    var offset = $div.offset();
+    var x = ev.clientX - offset.left;
+    console.log(x);
+});
 
 function handle_song(response, id){
     let button = $('#html_player')[0];
