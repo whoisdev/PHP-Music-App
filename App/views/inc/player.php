@@ -22,14 +22,14 @@
         <div class="row">
             <div class="player">
                 <div class="col-xs-2 playbar_button" id="start_time">- -</div>
-                <div class="col-xs-8 play">
+                <div class="col-xs-8 play" v-on:click="updatesong">
                     <div id ="played">
 
                     </div>
                 </div>
                 <div class="col-xs-2 playbar_button" id="end_time">- -</div>
-                <audio id='html_player' controls="controls">
-                    <source src=" " id='audiosrc' type="audio/mpeg"/>
+                <audio id='html_player' controls="controls" @timeupdate="onTimeUpdateListener">
+                    <source  src=" " id='audiosrc' type="audio/mpeg"/>
                 </audio>
             </div>
         </div>

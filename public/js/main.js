@@ -129,12 +129,6 @@ let UIcontroller = function () {
       }
 
 };
-$('.play').bind('click', function (ev) {
-    var $div = $(ev.target);
-    var offset = $div.offset();
-    var x = ev.clientX - offset.left;
-    console.log(x);
-});
 
 function handle_song(response, id){
     let button = $('#html_player')[0];

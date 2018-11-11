@@ -271,7 +271,7 @@ body,html{
     margin: 0;
 }
 #html_player{
-    display: none;
+    /* display: none; */
 }
 .add_to{
     width: 35px;
