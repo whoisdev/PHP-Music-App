@@ -1,9 +1,8 @@
 <?php
-if(!isset($_SESSION)){
-    session_start();
-}
 class Playlist extends Controller{
     private $db;
+    public $script = 'playlist.js';
+    
     public function __construct(){
         $this->db = new Database;
         if(!empty($_SESSION['username'])){
@@ -16,7 +15,7 @@ class Playlist extends Controller{
     public function all(){
         if(!empty($_SESSION['username'])){
             $data = $this->playListModel->all();
-            $this->view('playlist',$data); 
+            $this->view('playlist',$data, $this->script); 
         } else{
             header("location:".URLROOT."profile/signin");
         }

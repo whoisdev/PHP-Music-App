@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION)){
+    session_start();
+}
 /*
     - Requireing bootstrap files which itself requires everything in 
     - the App folder i.e. is the MVC

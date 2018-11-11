@@ -66,8 +66,13 @@ class UserPlaylist{
         ");
         $this->db->bind(':name',$name);
         $this->db->bind(':user_id',$this->user_id);
-        return $this->db->execute();
-
+        try{
+            $this->db->execute();
+            return true;
+        }
+        catch (Exception $e){
+            return false;
+        }
     }
 }
 

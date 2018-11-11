@@ -85,20 +85,20 @@ let ajax_controller = function(UI) {
             button.muted = true;
         }
     });
-    $('.add').on('click',()=>{
-        $('.playlist_name').fadeIn();
-        let button = event.target;
-        button.id = 'submit_playlist';
-        $("#submit_playlist").on('click',()=>{
-            $.post(`${site_url}/playlist/add`,{name:$('.playlist_name').val()},(data)=>{
-                $('body').append(data);
-                setTimeout(()=>{
-                    $('.message').fadeOut();
-                    location.reload();
-                },500);
-            });
-        });
-    });
+    // $('.add').on('click',()=>{
+    //     $('.playlist_name').fadeIn();
+    //     let button = event.target;
+    //     button.id = 'submit_playlist';
+    //     $("#submit_playlist").on('click',()=>{
+    //         $.post(`${site_url}/playlist/add`,{name:$('.playlist_name').val()},(data)=>{
+    //             $('body').append(data);
+    //             setTimeout(()=>{
+    //                 $('.message').fadeOut();
+    //                 location.reload();
+    //             },500);
+    //         });
+    //     });
+    // });
     $('#next').on('click',()=>{
         var id_current = getUrlParameter('song');
         if(id_current){

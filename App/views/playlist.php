@@ -1,4 +1,4 @@
-<?php  include APPROOT . '/views/inc/header.php' ?>
+<?php include APPROOT . '/views/inc/header.php' ?>
 <?php 
 
 require('../App/views/inc/sidebar.php');
@@ -8,7 +8,6 @@ $twig = new Twig_Environment($loader, array(
     'debug' => true
 ));
 $twig->addExtension(new Twig_Extension_Debug());
-
 ?>
 <div class="col-sm-8 col-md-8 main-section" id="main"><?php 
     echo $twig->render('playlist.html',array(
