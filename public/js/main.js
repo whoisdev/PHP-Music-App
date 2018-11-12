@@ -2,7 +2,6 @@
 const site_url = 'http://localhost/PHP-Music-App';
 $( document ).ready(function() {
     var UI = UIcontroller();
-    UI.playbar();
     ajax_controller(UI);
 });
 
@@ -116,15 +115,6 @@ let UIcontroller = function () {
           },
         dom_manupulation : function (id,content) {
             $("#"+id).html(content);
-        },
-        playbar : function () {
-            button.addEventListener('timeupdate', (event) => {
-                const currentTime = (button.currentTime / button.duration)*100;
-                if(currentTime){
-                    $("#start_time").html(millisToMinutesAndSeconds(button.currentTime));
-                    $("#played").css('width',currentTime+"%");
-                }
-            }, false);
         }
       }
 

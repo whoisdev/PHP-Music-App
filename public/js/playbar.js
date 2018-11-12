@@ -2,10 +2,12 @@ new Vue({
     el : '#playbar',
     methods : {
         updatesong : function(event){
+            let button = $('#html_player')[0];
             var $div = $(event.target);
             var offset = $div.offset();
             var x = event.clientX - offset.left;
-            console.log((x/$div.width())*100);
+            x = ((x/$div.width()) * button.duration);
+            button.currentTime = x;
         },
         onTimeUpdateListener : function(){
             let button = $('#html_player')[0];
