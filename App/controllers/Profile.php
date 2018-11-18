@@ -71,7 +71,7 @@ class Profile extends Controller{
         - Sign out a user
     */
     public function signout(){
-        unset($_SESSION['username']);
+        session_destroy();
         header('location:'.URLROOT.'songs/all');        
     }
 }

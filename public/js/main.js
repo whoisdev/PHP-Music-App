@@ -20,15 +20,6 @@ let ajax_controller = function(UI) {
             }
         });
     });
-    $("#all_songs").on('click', () => {
-        history.pushState({},"",`${site_url}/songs/all`);
-        $.get(`${site_url}/songs/ajax`, { request:1 }, function(data) {
-            $("#main").html(data);
-        });
-        if($( window ).width()<='768'){
-            $('.songs-div').fadeOut();
-        }
-    });
 
     $('body').click(function () {
         $('.options').html('');

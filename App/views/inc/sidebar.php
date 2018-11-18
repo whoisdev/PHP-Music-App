@@ -28,8 +28,8 @@
        <?php  if(empty($_SESSION['username'])) { ?>
             <a href=<?php echo URLROOT.'profile/signin'?>><button class="sidebar_button active" id="profile">Profile</button></a>
        <?php } ?>
-        <a><button class="sidebar_button" id="all_songs">Songs</button></a>
-        <a href=<?php echo URLROOT.'playlist/all'?>><button class="sidebar_button" id="playlist" >Playlists</button></a>
+        <a><button class="sidebar_button" id="all_songs" v-on:click="getsongs">Songs</button></a>
+        <a><button class="sidebar_button" id="playlist" v-on:click="getplaylist" >Playlists</button></a>
         <?php if(!empty($_SESSION['username'])) { ?>
         <a href =<?php echo URLROOT.'songs/history'?>><button class="sidebar_button">History</button></a>
         <a href = <?php echo URLROOT.'addsong'?>><button class="sidebar_button">Add Song</button></a>

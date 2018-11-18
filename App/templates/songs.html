@@ -1,6 +1,7 @@
 <h2 class="title">{{title}}   <img src={{root ~ '/images/music.png'}} class="play_song"></h2>
 {% for value in data%}
-<div class="songs-cards">
+
+<div class="songs-cards" v-on:click="getPlayListSongs" >
     <div class="row">
         <div class="col-sm-12">
             <hr>
@@ -11,8 +12,11 @@
                 {% endif %}  
                 <span class='append'></span>
             </div>
-            
+            {% if playlist == true %}
+            <button class="icons get_song" v-on:click="getPlayListSongs" id={{value.song_id}}><img src={{root ~ '/images/play.png'}} class="play_song"></button>
+            {% else %}
             <button class="icons get_song" id={{value.song_id}}><img src={{root ~ '/images/play.png'}} class="play_song"></button>
+            {% endif %}
             <span class="song-title">
                 {% if value['name'] | length < 25 %}
                     {{value.name| replace ({'.mp3':''})}}

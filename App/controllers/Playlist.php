@@ -1,4 +1,5 @@
 <?php
+require_once '../../vendor/autoload.php';
 class Playlist extends Controller{
     private $db;
     private $script = 'playlist.js';
@@ -8,6 +9,11 @@ class Playlist extends Controller{
         $this->db = new Database;
         if(!empty($_SESSION['username'])){
             $this->playListModel = $this->model('UserPlaylist');
+            $loader = new Twig_Loader_Filesystem('../App/templates');
+            $this->twig = new Twig_Environment($loader, array(
+                'debug' => true
+            ));
+            $this->twig->addExtension(new Twig_Extension_Debug());
         }
     }
     /*
@@ -21,6 +27,16 @@ class Playlist extends Controller{
             header("location:".URLROOT."profile/signin");
         }
     }
+
+    public function ajaxPlaylist(){
+        $allPlaylist = $this->playListModel->all();
+        echo $this->twig->render('playlist.html',array(
+            'data' => $allPlaylist,
+            'title' => 'Your Playlists',
+            'root'=>URLROOT,
+            'url'=>URLROOT.'playlist/play/'
+        ));
+    }
     /*
         - returns the songs in the playlist requested
     */
@@ -31,6 +47,7 @@ class Playlist extends Controller{
             'songs'=> $data,
             'Title'=>'Playlist '.ucwords($params)
         ];
+        $data['playlist'] = 'true';
         $this->view('index',$data);  
      }
      /*
